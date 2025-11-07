@@ -5,7 +5,10 @@ app = Flask(__name__)
 
 # Configuracion de flask-mail
 
-# Zonda de rutas
+# Zona de rutas
+@app.route("/")
+def home():
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run("localhost", 3000, debug=True)

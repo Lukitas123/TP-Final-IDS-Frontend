@@ -1,6 +1,49 @@
-{% extends 'base.html' %}
-{% block title %}Hotel Bugbusters{% endblock %}
+{% extends 'base.html' %} {% block title %}Hotel Bugbusters{% endblock %} {%
+block content %}
+<section class="about-us">
+  <div class="container">
+    <div class="about-us__content">
+      <div class="about-us__text">
+        <div class="about-us__title">
+          <h2>Acerca de Hotel Bugbusters</h2>
+        </div>
+        <div class="about-us__description">
+          <h3>"Donde el lujo se encuentra con la comodidad"</h3>
+          <p>
+            Desde su fundación en 1982 por la familia García, el
+            <strong>Hotel Bugbusters</strong>
+            ha sido sinónimo de hospitalidad y excelencia en Buenos Aires. Lo
+            que comenzó como una pequeña posada de diez habitaciones pronto se
+            transformó en un destino de referencia para viajeros de todo el
+            mundo, gracias a su atención personalizada y su ambiente cálido.
+          </p>
+          <p>
+            Durante la década del 90, el hotel experimentó un crecimiento
+            significativo con la incorporación de un restaurante gourmet,
+            reconocido por su cocina de autor. Años más tarde, la expansión
+            continuó con la apertura de un spa y una piscina climatizada,
+            convirtiendo al Bugbusters en un espacio ideal tanto para el
+            descanso como para los eventos corporativos.
+          </p>
+          <p>
+            Hoy, <strong>Hotel Bugbusters</strong> combina el encanto de su
+            historia con las comodidades modernas, ofreciendo una experiencia
+            única donde la elegancia, el confort y el servicio excepcional se
+            unen para crear recuerdos inolvidables.
+          </p>
+        </div>
+        <div class="about-us__button">
+          <a class="btn-cta" href="#">¡Reservá ahora!</a>
+        </div>
+      </div>
+      <!-- Falta implementar el carrusel -->
+      <div class="about-us__carousel">
+        <img
+          src="https://i.pinimg.com/564x/47/60/9f/47609ff63956c960d824f1bd68e282e3.jpg"
+        />
+      </div>
+    </div>
+  </div>
+</section>
 
-{% block content %}
-    <h1>Bienvenido a Hotel Bugbusters</h1>
 {% endblock %}

@@ -1,3 +1,64 @@
+/* ===========================
+   SECCIÓN - PRESENTACIÓN
+   =========================== */
+
+/* ===========================
+   SECCIÓN - SOBRE NOSOTROS
+   =========================== */
+
+.about-us {
+  padding: var(--spacing-xl) var(--spacing-md);
+  background-color: var(--accent-color);
+}
+
+.about-us__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-lg);
+}
+
+/* --- TÍTULO --- */
+.about-us__title {
+  font-family: var(--font-family-heading);
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+  letter-spacing: 1px;
+}
+
+/* --- SUBTÍTULO --- */
+.about-us__description h3 {
+  font-family: var(--font-family-heading);
+  color: var(--secondary-color);
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-md);
+  font-weight: 600;
+}
+
+/* --- PÁRRAFO --- */
+.about-us__description p {
+  color: var(--text-light);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: var(--spacing-md);
+  text-align: justify;
+  max-width: 800px;
+}
+
+/* ===========================
+   SECCIÓN - TESTIMONIOS
+   =========================== */
+
+/* ===========================
+   SECCIÓN - SPONSORS
+   =========================== */
+
+/* ===========================
+   SECCIÓN - MAPA
+   =========================== */
+
 /* ================= FOOTER ================= */
 
 footer {
@@ -111,8 +172,41 @@ footer {
   text-decoration: underline;
 }
 
-/* --- RESPONSIVE --- */
+/* === DESKTOP MEDIA QUERY === */
 @media (min-width: 768px) {
+
+  /* --- SOBRE NOSOTROS --- */
+  .about-us__content {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    text-align: left;
+    gap: var(--spacing-xl);
+  }
+
+  .about-us__text {
+    flex: 1;
+  }
+
+  .about-us__title {
+    font-size: 2.5rem;
+  }
+
+  .about-us__description {
+    flex: 1;
+  }
+
+  .about-us__description p {
+    font-size: 1.1rem;
+  }
+
+  .about-us__carousel {
+    display: flex;
+    align-items: center;
+    flex: 1;
+   }
+
+  /* --- FOOTER --- */
   .footer__contact {
     flex-direction: row;
     justify-content: space-between;

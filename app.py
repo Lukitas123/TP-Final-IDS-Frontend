@@ -12,7 +12,7 @@ def home():
 
 @app.route("/contacto", methods=['GET', 'POST'])
 def  contacto():
-    return 
+    return render_template("contacto.html")
 
 if __name__ == "__main__":
     app.run("localhost", 3000, debug=True)

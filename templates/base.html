@@ -1,19 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--FAVICON-->
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='images/LOGO-ICON.png') }}"
+      type="image/x-icon"
+    />
+    <!--FONT AWESOME-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!--STYLESHEETS-->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/base.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/components.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/layout.css') }}"
+    />
     <title>{% block title %}{% endblock %}</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header -->
     <header>
-        <!-- Navigation -->
-        <nav></nav>
+      <!-- Navigation -->
+      <nav>
+        <div class="logo">
+          <a href="/">
+            <img
+              src="{{ url_for ('static', filename='images/LOGO.png')}}"
+              alt="Logo Bugbusters"
+            />
+          </a>
+        </div>
+        <button class="hamburger" aria-label="Menú">
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+        </button>
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a class="nav__link" href="#">HOME</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#">NOSOTROS</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#">HABITACIONES</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#">SERVICIOS</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#">CONTACTO</a>
+          </li>
+        </ul>
+      </nav>
     </header>
     <!-- Main Content -->
     <main>{% block content %}{% endblock %}</main>
     <!-- Footer -->
-    <footer></footer>
-</body>
+    <footer>
+      <div class="container">
+        <div class="footer__contact">
+          <!-- Phone icon -->
+          <div class="footer__contact-block">
+            <div class="footer__contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="footer__contact-text">
+              <h3>RESERVAS</h3>
+              <div>+54 9 11-1234-5678</div>
+            </div>
+          </div>
+          <!-- Email icon -->
+          <div class="footer__contact-block">
+            <div class="footer__contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="footer__contact-text">
+              <h3>EMAIL</h3>
+              <div>info@hotelbugbusters.com</div>
+            </div>
+          </div>
+          <!-- Localization icon -->
+          <div class="footer__contact-block">
+            <div class="footer__contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="footer__contact-text">
+              <h3>NUESTRA UBICACIÓN</h3>
+              <div>
+                Av. del Software 4040, San Carlos de Bariloche, Argentina
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer__rrss">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <div class="footer__info">
+        <p>
+          Hotel Bugbusters es tu refugio digital en la Patagonia. Descansá con
+          vistas al Nahuel Huapi, disfrutá de nuestro desayuno artesanal y
+          conectá (o desconectá) a tu ritmo.
+        </p>
+      </div>
+      <div class="footer__copyright">
+        <span>
+          &copy; 2025 Hotel Bugbusters — Todos los derechos reservados | Creado
+          por <a href="#">Polémica En El Bash</a>
+        </span>
+      </div>
+    </footer>
+    <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+  </body>
 </html>

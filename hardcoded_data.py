@@ -1,4 +1,6 @@
-DATA = {
+from typing import Dict, List, Any
+
+DATA: Dict[str, List[Any]] = {
     "tipo_habitacion": [
         {
             "id": 1,
@@ -9,7 +11,7 @@ DATA = {
             - **Especificaciones:** Escritorio de trabajo ergonómico, Wi-Fi de alta velocidad (100mbps), y un Smart TV de 40" con acceso a streaming.
             - **Lujos:** Incluye una mini-nevera surtida (costo adicional), sábanas de algodón de 200 hilos y set de amenities básicos de bienvenida.
             """,
-            "galeria": "['/images/tipo_habitacion/', '/images/tipo_habitacion/', '/images/tipo_habitacion/']"
+            "galeria": "['/images/tipo_habitacion/estandar/estandar-1.png', '/images/tipo_habitacion/estandar/estandar-2.png', '/images/tipo_habitacion/estandar/estandar-3.png']"
         },
         {
             "id": 2,
@@ -20,7 +22,7 @@ DATA = {
             - **Especificaciones:** Gran ventanal con vistas a los jardines interiores del hotel. El baño es amplio, con doble lavamanos y bañera.
             - **Lujos:** Cafetera Nespresso con 4 cápsulas de cortesía por día, Smart TV de 50" y un pequeño rincón de lectura con sillón.
             """,
-            "galeria": "['/images/tipo_habitacion/', '/images/tipo_habitacion/', '/images/tipo_habitacion/']"
+            "galeria": "['/images/tipo_habitacion/doble-superio/doble-superior-1.jpg', '/images/tipo_habitacion/doble-superio/doble-superior-2.jpg', '/images/tipo_habitacion/doble-superio/doble-superior-3.jpg']"
         },
         {
             "id": 3,

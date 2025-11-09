@@ -1,6 +1,233 @@
-{% extends 'base.html' %}
-{% block title %}Hotel Bugbusters{% endblock %}
+{% extends 'base.html' %} {% block title %}Hotel Bugbusters{% endblock %} {%
+block content %}
+<section class="about-us">
+  <div class="container">
+    <div class="about-us__content">
+      <div class="about-us__text">
+        <div class="about-us__title">
+          <h2>Acerca de Hotel Bugbusters</h2>
+        </div>
+        <div class="about-us__description">
+          <h3>"Donde el lujo se encuentra con la comodidad"</h3>
+          <p>
+            Desde su fundación en 1982 por la familia García, el
+            <strong>Hotel Bugbusters</strong>
+            ha sido sinónimo de hospitalidad y excelencia en Buenos Aires. Lo
+            que comenzó como una pequeña posada de diez habitaciones pronto se
+            transformó en un destino de referencia para viajeros de todo el
+            mundo, gracias a su atención personalizada y su ambiente cálido.
+          </p>
+          <p>
+            Durante la década del 90, el hotel experimentó un crecimiento
+            significativo con la incorporación de un restaurante gourmet,
+            reconocido por su cocina de autor. Años más tarde, la expansión
+            continuó con la apertura de un spa y una piscina climatizada,
+            convirtiendo al Bugbusters en un espacio ideal tanto para el
+            descanso como para los eventos corporativos.
+          </p>
+          <p>
+            Hoy, <strong>Hotel Bugbusters</strong> combina el encanto de su
+            historia con las comodidades modernas, ofreciendo una experiencia
+            única donde la elegancia, el confort y el servicio excepcional se
+            unen para crear recuerdos inolvidables.
+          </p>
+        </div>
+        <div class="about-us__button">
+          <a class="btn-cta" href="#">¡Reservá ahora!</a>
+        </div>
+      </div>
+      <!-- Falta implementar el carrusel -->
+      <div class="about-us__carousel">
+        <img
+          src="https://i.pinimg.com/564x/47/60/9f/47609ff63956c960d824f1bd68e282e3.jpg"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+<section class="testimonials">
+  <div class="container">
+    <div class="testimonials__title">
+      <h2>Lo que dicen nuestros huéspedes</h2>
+    </div>
+    <div class="testimonials__carousel">
+      <!-- Previous Button -->
+      <button class="carousel__btn prev" aria-label="Testimonio anterior">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <!-- Testimonial Card -->
+      <div class="testimonial-card active">
+        <img
+          class="testimonial-card__image"
+          src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Portrait smiling woman"
+        />
+        <p class="testimonial-card__text">
+          "Una experiencia inolvidable. El personal fue increíblemente atento y
+          las instalaciones de primera clase. ¡Volveré sin duda!"
+        </p>
+        <span class="testimonial-card__author">- María S.</span>
+      </div>
+      <!-- Testimonial Card -->
+      <div class="testimonial-card">
+        <img
+          class="testimonial-card__image"
+          src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+          alt="Portrait smiling man"
+        />
+        <p class="testimonial-card__text">
+          "El Hotel Bugbusters superó todas mis expectativas. La ubicación es
+          perfecta y el desayuno es delicioso. ¡Altamente recomendado!"
+        </p>
+        <span class="testimonial-card__author">- Juan P.</span>
+      </div>
+      <!-- Testimonial Card -->
+      <div class="testimonial-card">
+        <img
+          class="testimonial-card__image"
+          src="https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870"
+          alt="Portrait business man"
+        />
+        <p class="testimonial-card__text">
+          "Viajo seguido por trabajo y este hotel se convirtió en mi lugar
+          preferido. El Wi-Fi es rápido, las camas muy cómodas y el personal
+          siempre dispuesto a ayudar."
+        </p>
+        <span class="testimonial-card__author">- Martín G.</span>
+      </div>
+      <!-- Testimonial Card -->
+      <div class="testimonial-card">
+        <img
+          class="testimonial-card__image"
+          src="https://plus.unsplash.com/premium_photo-1661660247608-236c8bafd3cb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=880"
+          alt="Portrait mature woman smiling"
+        />
+        <p class="testimonial-card__text">
+          "Pasamos un fin de semana en familia y todo fue perfecto. Los niños
+          disfrutaron de la pileta y nosotros del spa. ¡Una experiencia para
+          repetir!"
+        </p>
+        <span class="testimonial-card__author">- Carolina y Fabián R.</span>
+      </div>
+      <!-- Testimonial Card -->
+      <div class="testimonial-card">
+        <img
+          class="testimonial-card__image"
+          src="https://images.unsplash.com/photo-1667890785988-8da12fd0989b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=395"
+          alt="Portrait woman looking at camera"
+        />
+        <p class="testimonial-card__text">
+          "El entorno es tranquilo y el diseño del hotel transmite mucha paz.
+          Ideal para desconectarse unos días y disfrutar del paisaje."
+        </p>
+        <span class="testimonial-card__author">- Sofía L.</span>
+      </div>
+      <!-- Testimonial Card -->
+      <div class="testimonial-card">
+        <img
+          class="testimonial-card__image"
+          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=387"
+          alt="Portrait young woman outdoors"
+        />
+        <p class="testimonial-card__text">
+          "Me encantó cada momento de mi estancia. Las habitaciones son cómodas
+          y elegantes, y el servicio es excepcional. ¡Gracias por todo!"
+        </p>
+        <span class="testimonial-card__author">- Laura M.</span>
+      </div>
 
-{% block content %}
-    <h1>Bienvenido a Hotel Bugbusters</h1>
+      <!-- Next Button -->
+      <button class="carousel__btn next" aria-label="Siguiente testimonio">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</section>
+<section class="sponsors">
+  <div class="container">
+    <div class="sponsors__title">
+      <h2>Nuestros Partners</h2>
+    </div>
+    <div class="sponsors__logos">
+      <div class="logos-slide">
+        <div class="sponsor-logo">
+          <img
+            src="https://i.pinimg.com/564x/45/20/dd/4520ddfc56208707045c56232e946f7f.jpg"
+            alt="Partner 1"
+          />
+        </div>
+        <div class="sponsor-logo">
+          <img
+            src="https://i.pinimg.com/564x/a5/89/c8/a589c8077c7e4735b767a9ffc7ef6c23.jpg"
+            alt="Partner 2"
+          />
+        </div>
+        <div class="sponsor-logo">
+          <img
+            src="https://i.pinimg.com/564x/ad/78/5a/ad785a9fb1587a496092b3d2f4e912b8.jpg"
+            alt="Partner 3"
+          />
+        </div>
+        <div class="sponsor-logo">
+          <img
+            src="https://i.pinimg.com/564x/17/09/b8/1709b8e482eec0862ee62804e42766fa.jpg"
+            alt="Partner 4"
+          />
+        </div>
+        <div class="sponsor-logo">
+          <img
+            src="https://i.pinimg.com/564x/89/1a/f2/891af2adbdcdf549c672c58add333977.jpg"
+            alt="Partner 5"
+          />
+        </div>
+        <div class="sponsor-logo">
+          <img
+            src="https://i.pinimg.com/564x/e7/65/04/e7650458fe434cd647eafb289a569fe2.jpg"
+            alt="Partner 6"
+          />
+        </div>
+      </div>
+      <!-- Duplicado para efecto de bucle infinito -->
+      <div class="logos-slide">
+        <div class="sponsor-logo">
+          <img
+            src="https://i.pinimg.com/564x/45/20/dd/4520ddfc56208707045c56232e946f7f.jpg"
+            alt="Partner 1"
+          />
+        </div>
+        <div class="sponsor-logo">
+          <img
+            src="https://i.pinimg.com/564x/a5/89/c8/a589c8077c7e4735b767a9ffc7ef6c23.jpg"
+            alt="Partner 2"
+          />
+        </div>
+        <div class="sponsor-logo">
+          <img
+            src="https://i.pinimg.com/564x/ad/78/5a/ad785a9fb1587a496092b3d2f4e912b8.jpg"
+            alt="Partner 3"
+          />
+        </div>
+        <div class="sponsor-logo">
+          <img
+            src="https://i.pinimg.com/564x/17/09/b8/1709b8e482eec0862ee62804e42766fa.jpg"
+            alt="Partner 4"
+          />
+        </div>
+        <div class="sponsor-logo">
+          <img
+            src="https://i.pinimg.com/564x/89/1a/f2/891af2adbdcdf549c672c58add333977.jpg"
+            alt="Partner 5"
+          />
+        </div>
+        <div class="sponsor-logo">
+          <img
+            src="https://i.pinimg.com/564x/e7/65/04/e7650458fe434cd647eafb289a569fe2.jpg"
+            alt="Partner 6"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}

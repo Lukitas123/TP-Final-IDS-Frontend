@@ -203,30 +203,30 @@ nav {
   box-shadow: 0 4px 12px rgba(var(--primary-color-rgb), 0.2);
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .card__main-content {
-    flex-direction: column;
-  }
-
-  .card__carousel {
-    width: 100%;
-  }
-
-  .card__description {
-    padding-right: 0;
-  }
-
-  .card__title {
-    font-size: 1.5rem;
-    padding: var(--spacing-md) var(--spacing-lg);
-  }
-
-  .card__button {
-    width: 100%;
-  }
+/* --- BOTÓN --- */
+.btn-cta {
+  display: inline-block;
+  background-color: var(--secondary-color);
+  color: var(--accent-color);
+  padding: 0.8rem 2rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-family: var(--font-family-heading);
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+  box-shadow: var(--box-shadow);
 }
 
+.btn-cta:hover {
+  background-color: var(--primary-color);
+  transform: translateY(-3px);
+  color: var(--accent-color);
+}
+
+/* === DESKTOP MEDIA QUERY === */
+@media (min-width: 768px) {
+
+  /* --- Navbar Container --- */
   .hamburger {
     display: none;
   }
@@ -265,3 +265,33 @@ nav {
   .nav__link:hover {
     color: var(--primary-color);
   }
+
+  /* --- Cards --- */
+  .card__main-content {
+    flex-direction: column;
+  }
+
+  .card__carousel {
+    width: 100%;
+  }
+
+  .card__description {
+    padding-right: 0;
+  }
+
+  .card__title {
+    font-size: 1.5rem;
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  .card__button {
+    width: 100%;
+  }
+
+  /** --- BOTÓN --- */
+  .btn-cta {
+    display: flex;
+    justify-content: center;
+    font-size: 1.05rem;
+  }
+}

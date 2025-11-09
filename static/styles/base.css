@@ -81,7 +81,7 @@ img {
   padding: 0 var(--spacing-sm);
 }
 
-/* Responsive adjustments */
+/* === DESKTOP MEDIA QUERY === */
 @media (min-width: 768px) {
 
   .container {

@@ -25,6 +25,11 @@ def actividades():
     return render_template("actividades.html", actividades=DATA["actividad"])
 
 
+@app.route("/paquetes")
+def paquetes():
+    return render_template("paquetes.html", paquetes=DATA["paquete"])
+
+
 @app.route("/contacto", methods=['GET', 'POST'])
 def contacto():
     if request.method == 'POST':

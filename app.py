@@ -25,6 +25,11 @@ def actividades():
     return render_template("actividades.html", actividades=DATA["actividad"])
 
 
+@app.route("/habitaciones")
+def habitaciones():
+    return render_template("habitaciones.html", habitaciones=DATA["tipo_habitacion"])
+
+
 @app.route("/paquetes")
 def paquetes():
     return render_template("paquetes.html", paquetes=DATA["paquete"])

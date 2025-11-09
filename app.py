@@ -4,6 +4,7 @@ from config import Config
 
 # Importa la función de ayuda desde functions.py
 from functions import enviar_email_contacto
+from hardcoded_data import DATA
 
 app = Flask(__name__)
 
@@ -17,6 +18,12 @@ mail = Mail(app)
 @app.route("/")
 def home():
     return render_template("index.html")
+
+
+@app.route("/actividades")
+def actividades():
+    return render_template("actividades.html", actividades=DATA["actividad"])
+
 
 @app.route("/contacto", methods=['GET', 'POST'])
 def contacto():
@@ -36,7 +43,7 @@ def contacto():
 
 @app.route("/servicios")
 def servicios():
-    return render_template("servicios.html", servicios=hardcoded_data.DATA["servicio"])
+    return render_template("servicios.html", servicios=DATA["servicio"])
 
 if __name__ == "__main__":
     app.run("localhost", 3000, debug=True)

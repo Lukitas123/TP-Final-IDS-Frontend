@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="page-title">Nuestras actividades</h1>
+
+    <div class="cards-container">
+        {% for actividad in actividades %}
+            <div class="card">
+                <h3 class="card__title" id="card-title-{{ actividad.id }}">
+                    {{ actividad.nombre }}
+                </h3>
+                <div class="card__body">
+                    <div class="card__main-content">
+                        <div class="card__carousel">
+                            [Carrusel de Imágenes]
+                        </div>
+                        <div class="card__description">
+                            {{ actividad.descripcion }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

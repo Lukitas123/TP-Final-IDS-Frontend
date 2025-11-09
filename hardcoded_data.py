@@ -47,7 +47,33 @@ DATA: Dict[str, List[Any]] = {
             "galeria": "['/images/tipo_habitacion/parejas/parejas-1.jpg', '/images/tipo_habitacion/parejas/parejas-2.jpg', '/images/tipo_habitacion/parejas/parejas-3.jpg']"
         }
     ],
-    "servicio": [{}, {}],
+    "servicio": [
+        {
+            "nombre": "Recepción 24 horas",
+            "descripcion": "Asistencia a los huespedes en todo momento",
+            "imagen": 'images/servicios/recepcion.jpeg',
+            "icono": "🛎️"
+        },
+        {
+            "nombre": "Limpieza",
+            "descripcion": "Servicio regular de limpieza y mantenimiento",
+            "imagen": 'images/servicios/limpieza.jpg',
+            "icono": "🫧"
+        },
+        {
+            "nombre": "Conectividad",
+            "descripcion": "Acceso a internet Wi-Fi",
+            "imagen": 'images/servicios/conectividad.jepg',
+            "icono": "🛜"
+        },
+        {
+            "nombre": "Restauración",
+            "descripcion": "Desayuno, almuerzo y cena. Servicio a la habitación o restaurantes",
+            "imagen": 'images/servicios/restauracion.jpeg',
+            "icono": "🍱"
+
+        }
+    ],
     "actividad": [{}, {}],
     "paquete": [{}, {}],
 }

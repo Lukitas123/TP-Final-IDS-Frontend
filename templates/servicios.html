@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}home/servicios{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <br>
+        <h1 class="text-center mb-4">Nuestros servicios</h1><br>
+        <div class="servicios-grid">
+            {% for servicio in servicios %}
+            <div class="servicio-card">
+                <div class="servicio-info">
+                    <h2>{{ servicio.nombre }}</h2>
+                    <p>{{ servicio.descripcion }}</p>
+                    <i class="icon">{{ servicio.icono }}</i>
+                    <img src="{{ url_for('static', filename='servicio.imagen') }}" alt="{{ servicio.titulo }}">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -50,6 +50,122 @@
 /* ===========================
    SECCIÓN - TESTIMONIOS
    =========================== */
+.testimonials {
+  background-color: var(--accent-color);
+  padding: 0 var(--spacing-md);
+  text-align: center;
+}
+
+.testimonials__title {
+  font-family: var(--font-family-heading);
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-lg);
+}
+
+.testimonials__carousel {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+  overflow: visible; /* permitir ver botones */
+  height: 400px;
+  background-color: var(--accent-color);
+}
+
+/* === Cards === */
+.testimonial-card {
+  position: absolute;
+  opacity: 0;
+  transform: scale(0.8) translateX(100%);
+  transition: var(--transition);
+  max-width: 600px;
+  background: #fff;
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  color: var(--text-color);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+
+.testimonial-card__image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: var(--spacing-md);
+  display: block;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.testimonial-card__text {
+  font-style: italic;
+  color: var(--text-light);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.5;
+  max-width: 90%;
+}
+
+.testimonial-card__author {
+  display: block;
+  font-weight: bold;
+  color: var(--secondary-color);
+  margin-top: var(--spacing-sm);
+}
+
+/* === Estados del carrusel === */
+.testimonial-card.active {
+  opacity: 1;
+  transform: scale(1) translateX(0);
+  z-index: 3;
+}
+
+.testimonial-card.prev {
+  opacity: 0.6;
+  transform: scale(0.9) translateX(-120%);
+  z-index: 2;
+}
+
+.testimonial-card.next {
+  opacity: 0.6;
+  transform: scale(0.9) translateX(120%);
+  z-index: 2;
+}
+
+/* === Botones de control === */
+.carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: var(--transition);
+  z-index: 4;
+  box-shadow: var(--box-shadow);
+}
+
+.carousel__btn:hover {
+  background: var(--secondary-color);
+}
+
+/* Posiciones */
+.carousel__btn.prev {
+  left: 1rem; /* visible dentro del contenedor */
+}
+
+.carousel__btn.next {
+  right: 1rem;
+}
+
 
 /* ===========================
    SECCIÓN - SPONSORS
@@ -205,6 +321,31 @@ footer {
     align-items: center;
     flex: 1;
    }
+
+   /* --- TESTIMONIOS --- */
+  .testimonials {
+    text-align: right;
+  }
+
+  .testimonials__carousel {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+    position: relative;
+  }
+
+  .carousel__btn.prev {
+    left: var(--spacing-md);
+  }
+
+  .carousel__btn.next {
+    right: var(--spacing-md);
+  }
+
+  .testimonial-card {
+    max-width: 700px;
+    padding: var(--spacing-xl);
+  }
 
   /* --- FOOTER --- */
   .footer__contact {

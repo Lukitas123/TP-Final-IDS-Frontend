@@ -4,15 +4,19 @@
 {% block content %}
     <div class="container mt-5">
         <br>
-        <h1 class="text-center mb-4">Nuestros servicios</h1><br>
-        <div class="servicios-grid">
+        <h1 class="page-title">Nuestros servicios</h1><br>
+        <div class="cards-container">
             {% for servicio in servicios %}
-            <div class="servicio-card">
-                <div class="servicio-info">
-                    <h2>{{ servicio.nombre }}</h2>
-                    <p>{{ servicio.descripcion }}</p>
-                    <i class="icon">{{ servicio.icono }}</i>
-                    <img src="{{ url_for('static', filename='servicio.imagen') }}" alt="{{ servicio.titulo }}">
+            <div class="card">
+                <h3 class="card__title" id="card-title-{{ servicio.id }}">{{ servicio.nombre }}</h3>
+                <div class="card__body">
+                    <div class="card__main-content">
+                        <div class="card__description">{{ servicio.descripcion }}</div>
+                        <div class="card__carousel">
+                            <img src="{{ url_for('static', filename=servicio.imagen) }}" alt="{{ servicio.nombre }}">
+                        </div>
+                    </div>
+                    <a href="#" class="card__button card__button--primary">Agregar a reserva</a>
                 </div>
             </div>
             {% endfor %}

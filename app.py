@@ -3,7 +3,7 @@ from flask_mail import Mail
 from config import Config
 
 # Importa la función de ayuda desde functions.py
-from functions import enviar_email_contacto
+from functions import enviar_email_contacto, parse_gallery
 from hardcoded_data import DATA
 
 app = Flask(__name__)
@@ -27,7 +27,9 @@ def actividades():
 
 @app.route("/habitaciones")
 def habitaciones():
-    return render_template("habitaciones.html", habitaciones=DATA["tipo_habitacion"])
+    room_types = parse_gallery(DATA["tipo_habitacion"])
+    print(room_types)
+    return render_template("habitaciones.html", habitaciones=room_types)
 
 
 @app.route("/paquetes")

@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block title %}Hotel Bugbusters{% endblock %}
+ {% block content %}
+ <h1 class="page-title">Paquetes de estadía</h1>
+
+    <div class="cards-container">
+        {% for paquete in paquetes %}
+            <div class="card">
+                <h3 class="card__title" id="card-title-{{ paquete.id }}">
+                    {{ paquete.nombre }}
+                </h3>
+                <div class="card__body">
+                    <div class="card__main-content">
+                        <div class="card__carousel">
+                            [Carrusel de Imágenes]
+                        </div>
+                        <div class="card__description">
+                            {{ paquete.descripcion }}
+                        </div>
+                    </div>
+                    <a href="#" class="card__button card__button--primary">
+                        Reserva ya!
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

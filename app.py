@@ -63,10 +63,16 @@ def servicios():
 
 @app.route("/reserva")
 def reserva():
-
-    return render_template("reserva.html", paquete=None)
+    rooms = DATA["tipo_habitacion"]
+    services = DATA["servicio"]
+    activities  = DATA["actividad"]
+    data = {
+        "rooms": rooms,
+        "services": services,
+        "activities": activities,
+    }
+    return render_template("reserva.html", paquete=None, data=data)
 
 
 if __name__ == "__main__":
-
     app.run("localhost", 3000, debug=True)

@@ -12,15 +12,24 @@
                 <div class="card__body">
                     <div class="card__main-content">
                         <div class="card__carousel">
-                            [Carrusel de Imágenes]
+                            <div class="carousel-container" id="carousel-{{ habitacion.id }}">
+                            {% for imagen in habitacion.galeria %}
+                                <div class="carousel-slide">
+                                    <img src="{{ url_for('static', filename=imagen) }}" alt="{{ habitacion.nombre }}">
+                                </div>
+                            {% endfor %}
+                            </div>
+                            <button class="carousel-btn prev" onclick="moveSlide('{{ habitacion.id }}', -1)">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn next" onclick="moveSlide('{{ habitacion.id }}', 1)">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                         <div class="card__description">
                             {{ habitacion.descripcion }}
                         </div>
                     </div>
-                    <a href="#" class="card__button card__button--primary">
-                        Reservar
-                    </a>
                 </div>
             </div>
         {% endfor %}

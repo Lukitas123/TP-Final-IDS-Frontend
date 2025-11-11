@@ -79,34 +79,33 @@ DATA: Dict[str, List[Any]] = {
             "nombre": "Tour turístico",
             "descripcion": "Viaje en micro turístico de 2 pisos a través de los puntos centrales e icónicos de la ciudad",
             "precio": "30 USD",
-            "galeria": 'images/actividades/actividad-1.jpeg',
-	        "cronograma": "Lunes a Viernes, salida a las 10, 11, 13 y 15hs",
-        }, 
-       {
+            "galeria": "images/actividades/actividad-1.jpeg",
+            "cronograma": "Lunes a Viernes, salida a las 10, 11, 13 y 15hs",
+        },
+        {
             "id": 2,
             "nombre": "Visita a museos",
             "descripcion": "Visita a museos selectos guiados por nuestro staff. Salida desde la puerta del hotel en vehículo de la empresa",
             "precio": "10 USD",
-            "galeria": 'images/actividades/actividad-2.jpeg',
-	        "cronograma": "Lunes a Viernes, salida a las 11hs y las 13hs",
+            "galeria": "images/actividades/actividad-2.jpeg",
+            "cronograma": "Lunes a Viernes, salida a las 11hs y las 13hs",
         },
-         {
+        {
             "id": 3,
             "nombre": "Visita a bodegas y degustación de vinos",
             "descripcion": "Visita a las bodegas afiliadas donde podrán degustar los deliciosos vinos regionales. Salida desde la puerta del hotel en vehículo de la empresa. Actividad no permitida para menores de 18 años",
             "precio": "25 USD",
-            "galeria": 'images/actividades/actividad-3.jpeg',
-	        "cronograma": "Miercoles y Viernes, salida a las 11hs",
-        }, 
-
-         {
+            "galeria": "images/actividades/actividad-3.jpeg",
+            "cronograma": "Miercoles y Viernes, salida a las 11hs",
+        },
+        {
             "id": 4,
             "nombre": "Paseo en aeronave",
-            "descripcion":  "Paseo en aeroplano donde podrá disfrutar de la hermosa vista y tener una experiencia única",
+            "descripcion": "Paseo en aeroplano donde podrá disfrutar de la hermosa vista y tener una experiencia única",
             "precio": "70 USD",
-            "galeria": 'images/actividades/actividad-4.jpeg',
-	         "cronograma": "Sabados a las 9, 13 y 17hs",
-        }, 
+            "galeria": "images/actividades/actividad-4.jpeg",
+            "cronograma": "Sabados a las 9, 13 y 17hs",
+        },
     ],
     "paquete": [
         {

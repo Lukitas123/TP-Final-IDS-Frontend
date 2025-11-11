@@ -14,6 +14,7 @@ app.config.from_object(Config)
 # Inicializa la extensión de Mail
 mail = Mail(app)
 
+
 # --- ZONA DE RUTAS ---
 @app.route("/")
 def home():
@@ -37,25 +38,35 @@ def paquetes():
     return render_template("paquetes.html", paquetes=DATA["paquete"])
 
 
-@app.route("/contacto", methods=['GET', 'POST'])
+@app.route("/contacto", methods=["GET", "POST"])
 def contacto():
-    if request.method == 'POST':
+    if request.method == "POST":
         exito = enviar_email_contacto(
             mail=mail,
             datos_formulario=request.form,
-            archivo_adjunto=request.files.get('archivo')
+            archivo_adjunto=request.files.get("archivo"),
         )
-        
+
         if exito:
-            return redirect(url_for('contacto', status='success'))
+            return redirect(url_for("contacto", status="success"))
         else:
-            return redirect(url_for('contacto', status='error'))
-    
+            return redirect(url_for("contacto", status="error"))
+
     return render_template("contacto.html")
+
 
 @app.route("/servicios")
 def servicios():
+
     return render_template("servicios.html", servicios=DATA["servicio"])
 
+
+@app.route("/reserva")
+def reserva():
+
+    return render_template("reserva.html")
+
+
 if __name__ == "__main__":
+
     app.run("localhost", 3000, debug=True)

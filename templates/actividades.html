@@ -6,16 +6,23 @@
     <div class="cards-container">
         {% for actividad in actividades %}
             <div class="card">
-                <h3 class="card__title" id="card-title-{{ actividad.id }}">
-                    {{ actividad.nombre }}
+                <h3 class="card__title" id="card-title-{{ actividad.id }}">{{ actividad.nombre }}</h3>
+                 
                 </h3>
                 <div class="card__body">
                     <div class="card__main-content">
                         <div class="card__carousel">
-                            [Carrusel de Imágenes]
+                            <img src="{{ url_for('static', filename=actividad.galeria) }}" alt="{{ actividad.nombre }}">
                         </div>
                         <div class="card__description">
                             {{ actividad.descripcion }}
+                        </div>
+                        <p>
+                            Cronograma: {{actividad.cronograma}}
+                        </p>
+                        <div class="card__button">
+                                Precio
+                            {{ actividad.precio }}
                         </div>
                     </div>
                 </div>

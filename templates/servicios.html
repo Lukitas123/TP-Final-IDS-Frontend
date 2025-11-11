@@ -4,15 +4,31 @@
 {% block content %}
     <div class="container mt-5">
         <br>
-        <h1 class="text-center mb-4">Nuestros servicios</h1><br>
-        <div class="servicios-grid">
+        <h1 class="page-title">Nuestros servicios</h1><br>
+        <div class="cards-container">
             {% for servicio in servicios %}
-            <div class="servicio-card">
-                <div class="servicio-info">
-                    <h2>{{ servicio.nombre }}</h2>
-                    <p>{{ servicio.descripcion }}</p>
-                    <i class="icon">{{ servicio.icono }}</i>
-                    <img src="{{ url_for('static', filename='servicio.imagen') }}" alt="{{ servicio.titulo }}">
+            <div class="card">
+                <h3 class="card__title" id="card-title-{{ servicio.id }}">{{ servicio.nombre }}</h3>
+                <div class="card__body">
+                    <div class="card__main-content">
+                        <div class="card__description">{{ servicio.descripcion }}</div>
+                        <div class="card__carousel">
+                            <div class="carousel-container" id="carousel-{{ servicio.id }}">
+                            {% for imagen in servicio.galeria %}
+                                <div class="carousel-slide">
+                                    <img src="{{ url_for('static', filename=imagen) }}" alt="{{ servicio.nombre }}">
+                                </div>
+                            {% endfor %}
+                            </div>
+                            <button class="carousel-btn prev" onclick="moveSlide('{{ servicio.id }}', -1)">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn next" onclick="moveSlide('{{ servicio.id }}', 1)">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <a href="#" class="card__button card__button--primary">Agregar a reserva</a>
                 </div>
             </div>
             {% endfor %}

@@ -1,6 +1,17 @@
 {% extends 'base.html' %} {% block title %}Hotel Bugbusters{% endblock %} {%
 block content %}
-<section class="about-us">
+<section class="hero">
+  <div class="hero__content">
+    <h1 class="hero__title">Hotel Bugbusters</h1>
+    <p class="hero__description">Donde el lujo se encuentra con la comodidad y la aventura.</p>
+    <div class="hero__buttons">
+      <a href="{{ url_for('reserva') }}" class="btn-cta">Reservá ahora</a>
+      <a href="#about-us" class="btn-secondary">Sobre Nosotros</a>
+    </div>
+  </div>
+</section>
+
+<section class="about-us" id="about-us">
   <div class="container">
     <div class="about-us__content">
       <div class="about-us__text">
@@ -45,6 +56,32 @@ block content %}
     </div>
   </div>
 </section>
+
+<section class="map-section">
+  <h2>Nuestra Ubicación</h2>
+  <div id="map"></div>
+</section>
+
+<style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+    .map-section {
+        padding: var(--spacing-lg);
+        text-align: center;
+    }
+</style>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+<script src="{{ url_for('static', filename='scripts/leaflet-map.js') }}"></script>
+
 <section class="testimonials">
   <div class="container">
     <div class="testimonials__title">

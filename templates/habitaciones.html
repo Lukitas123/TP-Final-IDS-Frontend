@@ -1,28 +1,41 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container mt-5">
+
+    <br>
     <h1 class="page-title">Nuestras Habitaciones</h1>
 
     <div class="cards-container">
         {% for habitacion in habitaciones %}
-            <div class="card">
-                <h3 class="card__title" id="card-title-{{ habitacion.id }}">
-                    {{ habitacion.nombre }}
-                </h3>
-                <div class="card__body">
-                    <div class="card__main-content">
-                        <div class="card__carousel">
-                            [Carrusel de Imágenes]
+        <div class="card">
+            <h3 class="card__title" id="card-title-{{ habitacion.id }}">
+                {{ habitacion.nombre }}
+            </h3>
+            <div class="card__body">
+                <div class="card__main-content">
+                    <div class="card__carousel">
+                        <div class="carousel-container" id="carousel-{{ habitacion.id }}">
+                            {% for imagen in habitacion.galeria %}
+                            <div class="carousel-slide">
+                                <img src="{{ url_for('static', filename=imagen) }}" alt="{{ habitacion.nombre }}">
+                            </div>
+                            {% endfor %}
                         </div>
-                        <div class="card__description">
-                            {{ habitacion.descripcion }}
-                        </div>
+                        <button class="carousel-btn prev" onclick="moveSlide('{{ habitacion.id }}', -1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn next" onclick="moveSlide('{{ habitacion.id }}', 1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
-                    <a href="#" class="card__button card__button--primary">
-                        Reservar
-                    </a>
+                    <div class="card__description">
+                        {{ habitacion.descripcion }}
+                    </div>
                 </div>
             </div>
+        </div>
         {% endfor %}
     </div>
+</div>
 {% endblock %}

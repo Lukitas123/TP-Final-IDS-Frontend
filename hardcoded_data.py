@@ -22,7 +22,7 @@ DATA: Dict[str, List[Any]] = {
             - **Especificaciones:** Gran ventanal con vistas a los jardines interiores del hotel. El baño es amplio, con doble lavamanos y bañera.
             - **Lujos:** Cafetera Nespresso con 4 cápsulas de cortesía por día, Smart TV de 50" y un pequeño rincón de lectura con sillón.
             """,
-            "galeria": "['/images/tipo_habitacion/doble-superio/doble-superior-1.jpg', '/images/tipo_habitacion/doble-superio/doble-superior-2.jpg', '/images/tipo_habitacion/doble-superio/doble-superior-3.jpg']",
+            "galeria": "['/images/tipo_habitacion/doble-superior/doble-superior-1.jpg', '/images/tipo_habitacion/doble-superior/doble-superior-2.jpg', '/images/tipo_habitacion/doble-superior/doble-superior-3.jpg']",
         },
         {
             "id": 3,
@@ -44,37 +44,85 @@ DATA: Dict[str, List[Any]] = {
             - **Especificaciones:** La legendaria cama King Size redonda (2.20m diámetro) con sábanas de seda y un discreto (pero estratégico) espejo en el techo.
             - **Lujos:** El protagonista es el jacuzzi doble con cromoterapia situado DENTRO del dormitorio, junto a un ventanal con vistas a la ciudad. Incluye 'Kit Romántico' de bienvenida (botella de champagne, fresas con chocolate y aceites de masaje). Sistema de sonido envolvente con playlist 'Reavivando la Llama' pre-cargada. Privacidad 100% garantizada.
             """,
-            "galeria": "['/images/tipo_habitacion/parejas/parejas-1.jpg', '/images/tipo_habitacion/parejas/parejas-2.jpg', '/images/tipo_habitacion/parejas/parejas-3.jpg']",
+            "galeria": "['/images/tipo_habitacion/parejas/parejas-1.png', '/images/tipo_habitacion/parejas/parejas-2.png', '/images/tipo_habitacion/parejas/parejas-3.png']",
         },
     ],
     "servicio": [
         {
-            "nombre": "Recepción 24 horas",
-            "descripcion": "Asistencia a los huespedes en todo momento",
-            "imagen": 'images/servicios/recepcion.jpeg',
-            "icono": "🛎️"
+            "id": 1,
+            "nombre": "Desayuno buffet",
+            "descripcion": "Gran variedad de platos fríos y calientes para el gusto de los comensales",
+            "galeria": [
+                "images/servicios/desayuno-buffet/desayuno1.jpg",
+                "images/servicios/deasayuno-buffet/desayuno2.jpg",
+                "images/servicios/desayuno-buffet/desayuno3.jpg",
+            ],
         },
         {
-            "nombre": "Limpieza",
-            "descripcion": "Servicio regular de limpieza y mantenimiento",
-            "imagen": 'images/servicios/limpieza.jpg',
-            "icono": "🫧"
+            "id": 2,
+            "nombre": "Spa",
+            "descripcion": "Ofrecemos una amplia variedad de tratamientos de relajación, belleza y bienestar",
+            "galeria": [
+                "images/servicios/spa/spa1.jpg",
+                "images/servicios/spa/spa2.jpg",
+                "images/servicios/spa/spa3.jpg",
+            ],
         },
         {
-            "nombre": "Conectividad",
-            "descripcion": "Acceso a internet Wi-Fi",
-            "imagen": 'images/servicios/conectividad.jepg',
-            "icono": "🛜"
+            "id": 3,
+            "nombre": "Pileta fría y/o climatizada",
+            "descripcion": "Piscina con sistema de calefacción para mantenerla a temperatura agradable",
+            "galeria": [
+                "images/servicios/pileta/pileta1.jpg",
+                "images/servicios/pileta/pileta2.jpg",
+                "images/servicios/pileta/pileta1.jpg",
+            ],
         },
         {
-            "nombre": "Restauración",
-            "descripcion": "Desayuno, almuerzo y cena. Servicio a la habitación o restaurantes",
-            "imagen": 'images/servicios/restauracion.jpeg',
-            "icono": "🍱"
-
-        }
+            "id": 4,
+            "nombre": "Gimnasio",
+            "descripcion": "Incluye asesoramiento profesional, clases colectivas de yoga, pilates, etc.",
+            "galeria": [
+                "images/servicios/gimnasio/gimnasio1.jpg",
+                "images/servicios/gimnasio/gimnasio2.jpg",
+                "images/servicios/gimnasio/gimnasio3.jpg",
+            ],
+        },
     ],
-    "actividad": [{}, {}],
+    "actividad": [
+        {
+            "id": 1,
+            "nombre": "Tour turístico",
+            "descripcion": "Viaje en micro turístico de 2 pisos a través de los puntos centrales e icónicos de la ciudad",
+            "precio": "30 USD",
+            "galeria": "images/actividades/actividad-1.jpg",
+            "cronograma": "Lunes a Viernes, salida a las 10, 11, 13 y 15hs",
+        },
+        {
+            "id": 2,
+            "nombre": "Visita a museos",
+            "descripcion": "Visita a museos selectos guiados por nuestro staff. Salida desde la puerta del hotel en vehículo de la empresa",
+            "precio": "10 USD",
+            "galeria": "images/actividades/actividad-2.jpg",
+            "cronograma": "Lunes a Viernes, salida a las 11hs y las 13hs",
+        },
+        {
+            "id": 3,
+            "nombre": "Visita a bodegas y degustación de vinos",
+            "descripcion": "Visita a las bodegas afiliadas donde podrán degustar los deliciosos vinos regionales. Salida desde la puerta del hotel en vehículo de la empresa. Actividad no permitida para menores de 18 años",
+            "precio": "25 USD",
+            "galeria": "images/actividades/actividad-3.jpg",
+            "cronograma": "Miercoles y Viernes, salida a las 11hs",
+        },
+        {
+            "id": 4,
+            "nombre": "Paseo en aeronave",
+            "descripcion": "Paseo en aeroplano donde podrá disfrutar de la hermosa vista y tener una experiencia única",
+            "precio": "70 USD",
+            "galeria": "images/actividades/actividad-4.jpg",
+            "cronograma": "Sabados a las 9, 13 y 17hs",
+        },
+    ],
     "paquete": [
         {
             "id": 1,

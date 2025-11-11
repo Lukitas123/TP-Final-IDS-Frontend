@@ -17,9 +17,59 @@
         <h1 class="reserva-personalizada__title">Reservá tu estadía</h1>
         <form class="reserva-personalizada__form">
             <div class="form-personalizada__group">
-                <label for="checkin">Check-in</label>
-                <input type="date" id="checkin" name="checkin" required>
+                <div class="form-personalizada__group-item">
+                    <label for="checkin">Check-in</label>
+                    <input type="date" id="checkin" name="checkin" required>
+                </div>
+                <div class="form-personalizada__group-item">
+                    <label for="checkout">Check-out</label>
+                    <input type="date" id="checkout" name="checkout" required>
+                </div>
             </div>
+            <div class="form-personalizada__group">
+                <div class="form-personalizada__group-item">
+                    <label for="room">Habitacion</label>
+                    <select name="room" id="room" required>
+                        <option value="" disabled selected>Tipo de habitación</option>
+                        {% for room in data.rooms %}
+                        <option value="{{ room.id }}">{{ room.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-personalizada__group">
+                <div class="form-personalizada__group-item">
+                    <label for="service">Servicios</label>
+                    <select name="service" id="service" required>
+                        <option value="" disabled selected>Servicios</option>
+                        {% for service in data.services %}
+                        <option value="{{ service.id }}">{{ service.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-personalizada__group">
+                <div class="form-personalizada__group-item">
+                    <label for="activity">Actividades</label>
+                    <select name="activity" id="activity" required>
+                        <option value="" disabled selected>Actividades</option>
+                        {% for activity in data.activities %}
+                        <option value="{{ activity.id }}">{{ activity.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-personalizada__group">
+                <div class="form-personalizada__group-item">
+                    <label for="name">Nombre Completo</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-personalizada__group-item">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+            <button type="submit" class="fform-personalizada__button">¡Reserva Ya!</button>
         </form>
     </div>
 </section>

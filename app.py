@@ -1,14 +1,24 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_mail import Mail
-from config import Config 
 from functions import enviar_email_contacto, parse_gallery
 from hardcoded_data import DATA
+import os 
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
-app.config.from_object(Config)
-
+# --- CONFIGURACIÓN DE FLASK-MAIL ---
+app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER')
+app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT', 587))
+app.config['MAIL_USE_TLS'] = os.getenv('MAIL_USE_TLS', 'true')
+app.config['MAIL_USE_SSL'] = os.getenv('MAIL_USE_SSL', 'false')
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER', os.getenv('MAIL_USERNAME')) 
 mail = Mail(app)
+
 
 
 # --- ZONA DE RUTAS ---
@@ -42,7 +52,6 @@ def contacto():
             datos_formulario=request.form,
             archivo_adjunto=request.files.get("archivo"),
         )
-
         if exito:
             return redirect(url_for("contacto", status="success"))
         else:

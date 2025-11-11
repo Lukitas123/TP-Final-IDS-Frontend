@@ -1,5 +1,60 @@
-{% if paquete.id %}
-    <h2>Reserva por paquete</h2>
-{% else %}
-    <h2>Nueva Reserva</h2>
-{% endif %}
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Use este tuto https://www.w3schools.com/howto/howto_css_fullscreen_video.asp -->
+
+<div class="reserva__background">
+    <video autoplay loop muted class="background__video">
+        <source src="{{ url_for('static', filename='/videos/fondo_reserva.mp4') }}" type="video/mp4">
+    </video>
+</div>
+
+<section class="reserva__section">
+    <div class="container">
+        <div class="reserva__content">
+            <h1 class="reserva__title">Reservá tu estadía</h1>
+        
+            <form class="reserva__form">
+                <div class="form__row">
+                    <div class="form__group">
+                        <label for="checkin">Check-in</label>
+                        <input type="date" id="checkin" name="checkin" required>
+                    </div>
+                    
+                    <div class="form__group">
+                        <label for="checkout">Check-out</label>
+                        <input type="date" id="checkout" name="checkout" required>
+                    </div>
+                </div>
+                
+                <div class="form__group">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                
+                <div class="form__group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form__group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+                
+                <div class="form__group">
+                    <label for="huespedes">Cantidad de huéspedes</label>
+                    <input type="number" id="huespedes" name="huespedes" min="1" value="1" required>
+                </div>
+                
+                <div class="form__group">
+                    <label for="comentarios">Comentarios adicionales</label>
+                    <textarea id="comentarios" name="comentarios" rows="4"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn--primary">Enviar reserva</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

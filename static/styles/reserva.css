@@ -1,0 +1,45 @@
+.background__video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.reserva__section {
+    min-height: 95vh;
+    display: flex;
+    align-items: center;
+    padding: 4rem 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+}
+
+.reserva__content {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 3rem;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.reserva__title {
+    text-align: center;
+    color: var(--primary-color, #333);
+    margin-bottom: 1rem;
+}
+
+.reserva__subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}

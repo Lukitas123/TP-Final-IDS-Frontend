@@ -22,7 +22,7 @@ DATA: Dict[str, List[Any]] = {
             - **Especificaciones:** Gran ventanal con vistas a los jardines interiores del hotel. El baño es amplio, con doble lavamanos y bañera.
             - **Lujos:** Cafetera Nespresso con 4 cápsulas de cortesía por día, Smart TV de 50" y un pequeño rincón de lectura con sillón.
             """,
-            "galeria": "['/images/tipo_habitacion/doble-superio/doble-superior-1.jpg', '/images/tipo_habitacion/doble-superio/doble-superior-2.jpg', '/images/tipo_habitacion/doble-superio/doble-superior-3.jpg']",
+            "galeria": "['/images/tipo_habitacion/doble-superior/doble-superior-1.jpg', '/images/tipo_habitacion/doble-superior/doble-superior-2.jpg', '/images/tipo_habitacion/doble-superior/doble-superior-3.jpg']",
         },
         {
             "id": 3,
@@ -44,7 +44,7 @@ DATA: Dict[str, List[Any]] = {
             - **Especificaciones:** La legendaria cama King Size redonda (2.20m diámetro) con sábanas de seda y un discreto (pero estratégico) espejo en el techo.
             - **Lujos:** El protagonista es el jacuzzi doble con cromoterapia situado DENTRO del dormitorio, junto a un ventanal con vistas a la ciudad. Incluye 'Kit Romántico' de bienvenida (botella de champagne, fresas con chocolate y aceites de masaje). Sistema de sonido envolvente con playlist 'Reavivando la Llama' pre-cargada. Privacidad 100% garantizada.
             """,
-            "galeria": "['/images/tipo_habitacion/parejas/parejas-1.jpg', '/images/tipo_habitacion/parejas/parejas-2.jpg', '/images/tipo_habitacion/parejas/parejas-3.jpg']",
+            "galeria": "['/images/tipo_habitacion/parejas/parejas-1.png', '/images/tipo_habitacion/parejas/parejas-2.png', '/images/tipo_habitacion/parejas/parejas-3.png']",
         },
     ],
     "servicio": [

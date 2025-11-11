@@ -13,7 +13,19 @@
                     <div class="card__main-content">
                         <div class="card__description">{{ servicio.descripcion }}</div>
                         <div class="card__carousel">
-                            <img src="{{ url_for('static', filename=servicio.imagen) }}" alt="{{ servicio.nombre }}">
+                            <div class="carousel-container" id="carousel-{{ servicio.id }}">
+                            {% for imagen in servicio.galeria %}
+                                <div class="carousel-slide">
+                                    <img src="{{ url_for('static', filename=imagen) }}" alt="{{ servicio.nombre }}">
+                                </div>
+                            {% endfor %}
+                            </div>
+                            <button class="carousel-btn prev" onclick="moveSlide('{{ servicio.id }}', -1)">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn next" onclick="moveSlide('{{ servicio.id }}', 1)">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                     <a href="#" class="card__button card__button--primary">Agregar a reserva</a>

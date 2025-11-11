@@ -68,3 +68,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // Inicializar
   updateCarousel();
 });
+
+// Carrusel simple para servicios
+const carouselState = {};
+
+function moveSlide(servicioId, direction) {
+  const container = document.getElementById(`carousel-${servicioId}`);
+  if (!container) return;
+
+  const slides = container.children.length;
+  carouselState[servicioId] = (carouselState[servicioId] || 0) + direction;
+
+  if (carouselState[servicioId] < 0) carouselState[servicioId] = slides - 1;
+  if (carouselState[servicioId] >= slides) carouselState[servicioId] = 0;
+
+  container.style.transform = `translateX(-${carouselState[servicioId] * 100}%)`;
+}

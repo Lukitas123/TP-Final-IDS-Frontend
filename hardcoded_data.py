@@ -129,10 +129,10 @@ DATA: Dict[str, List[Any]] = {
             "nombre": "Escapada Romántica Deluxe",
             "descripcion": """
         Ideal para parejas que buscan desconectar del mundo y reconectar entre sí.
-        - **Duración:** 2 noches / 3 días.
-        - **Hospedaje:** Suite "Nido de Amor" con jacuzzi doble y vista panorámica.
-        - **Gastronomía:** Cena romántica de 5 pasos en el restaurante 'Cielos del Valle', con maridaje premium.
-        - **Experiencia:** Masaje relajante en pareja (60 minutos) y acceso ilimitado al spa termal.
+        - Duración: 2 noches / 3 días.
+        - Hospedaje: Suite "Nido de Amor" con jacuzzi doble y vista panorámica.
+        - Gastronomía: Cena romántica de 5 pasos en el restaurante 'Cielos del Valle', con maridaje premium.
+        - Experiencia: Masaje relajante en pareja (60 minutos) y acceso ilimitado al spa termal.
         """,
             "incluye": [
                 "Desayuno buffet gourmet en habitación.",
@@ -140,17 +140,20 @@ DATA: Dict[str, List[Any]] = {
                 "Late check-out hasta las 14:00 hs (sujeto a disponibilidad).",
             ],
             "precio": 165000,
-            "galeria": "['#', '#', '#']",
+            "galeria": ['images/paquetes/escapada-romantica/escapada-romantica-1.jpg',
+                        'images/paquetes/escapada-romantica/escapada-romantica-2.jpg',
+                        'images/paquetes/escapada-romantica/escapada-romantica-3.jpg',
+                        ],
         },
         {
             "id": 2,
             "nombre": "Experiencia Wellness & Spa Total",
             "descripcion": """
         Un retiro de bienestar corporal y mental en el corazón del hotel.
-        - **Duración:** 3 noches / 4 días.
-        - **Hospedaje:** Junior Suite Ejecutiva con acceso exclusivo al Lounge.
-        - **Gastronomía:** Menú saludable diseñado por nuestro chef nutricionista.
-        - **Experiencia:** Circuito completo de hidroterapia, sauna seco, baño de vapor y masajes holísticos.
+        - Duración: 3 noches / 4 días.
+        - Hospedaje: Junior Suite Ejecutiva con acceso exclusivo al Lounge.
+        - Gastronomía: Menú saludable diseñado por nuestro chef nutricionista.
+        - Experiencia: Circuito completo de hidroterapia, sauna seco, baño de vapor y masajes holísticos.
         """,
             "incluye": [
                 "Clase privada de yoga al amanecer.",
@@ -158,17 +161,19 @@ DATA: Dict[str, List[Any]] = {
                 "Acceso ilimitado al gimnasio y piscina climatizada interior.",
             ],
             "precio": 210000,
-            "galeria": "['#', '#', '#']",
+            "galeria": ['images/paquetes/wellness-spa/wellness-spa-1.jpg', 
+                        'images/paquetes/wellness-spa/wellness-spa-2.jpg', 
+                        ],
         },
         {
             "id": 3,
             "nombre": "Escapada Gourmet & Vinos",
             "descripcion": """
         Una experiencia gastronómica exclusiva para paladares exigentes.
-        - **Duración:** 2 noches / 3 días.
-        - **Hospedaje:** Doble Superior con vista a los jardines.
-        - **Gastronomía:** Degustación privada de 6 vinos argentinos con sommelier del hotel.
-        - **Experiencia:** Taller de cocina regional con nuestro chef ejecutivo.
+        - Duración: 2 noches / 3 días.
+        - Hospedaje: Doble Superior con vista a los jardines.
+        - Gastronomía: Degustación privada de 6 vinos argentinos con sommelier del hotel.
+        - Experiencia: Taller de cocina regional con nuestro chef ejecutivo.
         """,
             "incluye": [
                 "Desayuno buffet con estación de pastelería artesanal.",
@@ -176,17 +181,19 @@ DATA: Dict[str, List[Any]] = {
                 "Tour por bodega boutique asociada (transporte incluido).",
             ],
             "precio": 185000,
-            "galeria": "['#', '#', '#']",
+            "galeria": ['images/paquetes/vinos/vinos-1.jpg', 
+                        'images/paquetes/vinos/vinos-2.jpg', 
+                        ],
         },
         {
             "id": 4,
             "nombre": "Semana Ejecutiva Premium",
             "descripcion": """
         Perfecto para profesionales que necesitan equilibrio entre trabajo y descanso.
-        - **Duración:** 5 noches / 6 días.
-        - **Hospedaje:** Junior Suite Ejecutiva con escritorio ergonómico y vista panorámica.
-        - **Servicios:** Espacio de coworking, coffee break diario y asistencia personalizada.
-        - **Experiencia:** Masaje antiestrés express y afterwork de bienvenida en el Lounge.
+        - Duración: 5 noches / 6 días.
+        - Hospedaje: Junior Suite Ejecutiva con escritorio ergonómico y vista panorámica.
+        - Servicios: Espacio de coworking, coffee break diario y asistencia personalizada.
+        - Experiencia: Masaje antiestrés express y afterwork de bienvenida en el Lounge.
         """,
             "incluye": [
                 "Desayuno ejecutivo diario.",
@@ -194,7 +201,9 @@ DATA: Dict[str, List[Any]] = {
                 "Upgrade de Wi-Fi a 300 Mbps y prioridad de habitación silenciosa.",
             ],
             "precio": 245000,
-            "galeria": "['#', '#', '#']",
+            "galeria": ['images/paquetes/ejecutiva/ejecutiva-1.jpg', 
+                        'images/paquetes/ejecutiva/ejecutiva-2.jpg', 
+                        ],
         },
     ],
 }

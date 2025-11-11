@@ -18,12 +18,12 @@
 }
 
 .reserva-personalizada__content {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 2rem 4rem;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1.25rem; /* mobile-first: smaller padding */
     border-radius: 12px;
-    width: 90%;
-    max-width: 75rem;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    width: 92%;
+    max-width: 56rem; /* ~900px - comfortable on mobile */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
 
 .reserva-personalizada__title {
@@ -49,36 +49,60 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    
-    input {
-        padding: 0.75rem 1rem;
-        font-size: 1rem;
-        border: 2px solid #252525;
-        border-radius: 5px;
-    }
+    width: 100%;
+}
 
-    label {
-        text-align: center;
-        font-size: 1.2rem;
-        font-weight: 500;
-    }
+.form-personalizada__group-item label {
+    text-align: center;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+}
 
-    select {
-        padding: 0.75rem 1rem;
-        font-size: 1rem;
-        border: 2px solid #252525;
-        border-radius: 5px;
-    }
+.form-personalizada__group-item input,
+.form-personalizada__group-item select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #252525;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.form-personalizada__group-item input:focus,
+.form-personalizada__group-item select:focus,
+.form-personalizada__group-item textarea:focus {
+    outline: none;
+    border-color: rgba(37,37,37,0.9);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
 }
 
 @media (min-width: 768px) {
     .reserva-personalizada__form {
         flex-direction: row;
+        flex-wrap: wrap;
     }
 
     
     .form-personalizada__group {
         flex-direction: row;
+    }
+
+
+    .reserva-personalizada__content {
+        padding: 2rem 3rem;
+        max-width: 75rem;
+    }
+
+    .form-personalizada__group-item {
+        flex: 1 1 0;
+        min-width: 0;
+    }
+
+    .form-personalizada__group-item label {
+        font-size: 1.1rem;
+        text-align: left;
     }
 
 }

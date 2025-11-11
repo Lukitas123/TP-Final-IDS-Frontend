@@ -1,17 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_mail import Mail
-from config import Config
-
-# Importa la función de ayuda desde functions.py
+from config import Config 
 from functions import enviar_email_contacto, parse_gallery
 from hardcoded_data import DATA
 
 app = Flask(__name__)
 
-# Carga la configuración modular desde el objeto Config
 app.config.from_object(Config)
 
-# Inicializa la extensión de Mail
 mail = Mail(app)
 
 
@@ -51,7 +47,6 @@ def contacto():
             return redirect(url_for("contacto", status="success"))
         else:
             return redirect(url_for("contacto", status="error"))
-
     return render_template("contacto.html")
 
 

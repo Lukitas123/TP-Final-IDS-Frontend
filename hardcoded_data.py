@@ -52,26 +52,42 @@ DATA: Dict[str, List[Any]] = {
             "id": 1,
             "nombre": "Desayuno buffet",
             "descripcion": "Gran variedad de platos fríos y calientes para el gusto de los comensales",
-            "galeria": ['images/servicios/desayuno-buffet/desayuno1.jpg', 'images/servicios/deasayuno-buffet/desayuno2.jpg', 'images/servicios/desayuno-buffet/desayuno3.jpg']
+            "galeria": [
+                "images/servicios/desayuno-buffet/desayuno1.jpg",
+                "images/servicios/deasayuno-buffet/desayuno2.jpg",
+                "images/servicios/desayuno-buffet/desayuno3.jpg",
+            ],
         },
         {
             "id": 2,
             "nombre": "Spa",
             "descripcion": "Ofrecemos una amplia variedad de tratamientos de relajación, belleza y bienestar",
-            "galeria": ['images/servicios/spa/spa1.jpg', 'images/servicios/spa/spa2.jpg', 'images/servicios/spa/spa3.jpg']
+            "galeria": [
+                "images/servicios/spa/spa1.jpg",
+                "images/servicios/spa/spa2.jpg",
+                "images/servicios/spa/spa3.jpg",
+            ],
         },
         {
             "id": 3,
             "nombre": "Pileta fría y/o climatizada",
             "descripcion": "Piscina con sistema de calefacción para mantenerla a temperatura agradable",
-            "galeria": ['images/servicios/pileta/pileta1.jpg', 'images/servicios/pileta/pileta2.jpg', 'images/servicios/pileta/pileta1.jpg',]
+            "galeria": [
+                "images/servicios/pileta/pileta1.jpg",
+                "images/servicios/pileta/pileta2.jpg",
+                "images/servicios/pileta/pileta1.jpg",
+            ],
         },
         {
             "id": 4,
             "nombre": "Gimnasio",
             "descripcion": "Incluye asesoramiento profesional, clases colectivas de yoga, pilates, etc.",
-            "galeria": ['images/servicios/gimnasio/gimnasio1.jpg', 'images/servicios/gimnasio/gimnasio2.jpg', 'images/servicios/gimnasio/gimnasio3.jpg']
-        }
+            "galeria": [
+                "images/servicios/gimnasio/gimnasio1.jpg",
+                "images/servicios/gimnasio/gimnasio2.jpg",
+                "images/servicios/gimnasio/gimnasio3.jpg",
+            ],
+        },
     ],
     "actividad": [
         {

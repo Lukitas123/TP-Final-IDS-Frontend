@@ -223,6 +223,7 @@ nav {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  
 }
 
 .card__button--primary {
@@ -234,6 +235,7 @@ nav {
   background-color: var(--primary-dark);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(var(--primary-color-rgb), 0.2);
+  text-decoration: none;
 }
 
 /* --- BOTÓN --- */

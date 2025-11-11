@@ -64,7 +64,7 @@ def servicios():
 @app.route("/reserva")
 def reserva():
 
-    return render_template("reserva.html")
+    return render_template("reserva.html", paquete=None)
 
 
 if __name__ == "__main__":

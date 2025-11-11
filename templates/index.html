@@ -1,6 +1,17 @@
 {% extends 'base.html' %} {% block title %}Hotel Bugbusters{% endblock %} {%
 block content %}
-<section class="about-us">
+<section class="hero">
+  <div class="hero__content">
+    <h1 class="hero__title">Hotel Bugbusters</h1>
+    <p class="hero__description">Donde el lujo se encuentra con la comodidad y la aventura.</p>
+    <div class="hero__buttons">
+      <a href="{{ url_for('reserva') }}" class="btn-cta">Reservá ahora</a>
+      <a href="#about-us" class="btn-secondary">Sobre Nosotros</a>
+    </div>
+  </div>
+</section>
+
+<section class="about-us" id="about-us">
   <div class="container">
     <div class="about-us__content">
       <div class="about-us__text">

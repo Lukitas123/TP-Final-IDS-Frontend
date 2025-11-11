@@ -32,12 +32,6 @@
     margin-bottom: 1rem;
 }
 
-.reserva__subtitle {
-    text-align: center;
-    color: #666;
-    margin-bottom: 2rem;
-}
-
 .form__row {
     display: grid;
     grid-template-columns: 1fr 1fr;

@@ -10,14 +10,26 @@
                 </h3>
                 <div class="card__body">
                     <div class="card__main-content">
-                        <div class="card__carousel">
-                            [Carrusel de Imágenes]
+                       <div class="card__carousel">
+                        <div class="carousel-container" id="carousel-{{ paquete.id }}">
+                            {% for imagen in paquete.galeria %}
+                            <div class="carousel-slide">
+                                <img src="{{ url_for('static', filename=imagen) }}" alt="{{ paquete.nombre }}">
+                            </div>
+                            {% endfor %}
                         </div>
+                        <button class="carousel-btn prev" onclick="moveSlide('{{ paquete.id }}', -1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn next" onclick="moveSlide('{{ paquete.id }}', 1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
                         <div class="card__description">
-                            {{ paquete.descripcion }}
+                            {{ paquete.descripcion| replace('\n', '<br>') |safe }}
                         </div>
                     </div>
-                    <a href="#" class="card__button card__button--primary">
+                    <a href="{{ url_for('reserva', paquete_id=paquete.id) }}" class="card__button card__button--primary">
                         Reserva ya!
                     </a>
                 </div>

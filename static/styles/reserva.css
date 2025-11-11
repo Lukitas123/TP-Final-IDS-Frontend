@@ -20,10 +20,10 @@
 .reserva-personalizada__content {
     background: rgba(255, 255, 255, 0.9);
     padding: 2rem 4rem;
-    border-radius: 15px;
+    border-radius: 12px;
     width: 90%;
     max-width: 75rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .reserva-personalizada__title {
@@ -34,22 +34,51 @@
 .reserva-personalizada__form {
     display: flex;
     justify-content: center;
+    gap: 1.5rem;
+    flex-direction: column;
 }
 
 .form-personalizada__group {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
+    flex-direction: column;
 }
 
-.form-personalizada__group label {
-    font-size: 1.2rem;
-    font-weight: 500;
+.form-personalizada__group-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    
+    input {
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        border: 2px solid #252525;
+        border-radius: 5px;
+    }
+
+    label {
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    select {
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        border: 2px solid #252525;
+        border-radius: 5px;
+    }
 }
 
-.form-personalizada__group input {
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    border: 2px solid #ddd;
-    border-radius: 5px;
+@media (min-width: 768px) {
+    .reserva-personalizada__form {
+        flex-direction: row;
+    }
+
+    
+    .form-personalizada__group {
+        flex-direction: row;
+    }
+
 }

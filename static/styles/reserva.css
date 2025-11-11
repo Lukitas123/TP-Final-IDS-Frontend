@@ -8,32 +8,48 @@
     z-index: -1;
 }
 
-.reserva__section {
+.reserva-personalizada__section {
     min-height: 95vh;
     display: flex;
     align-items: center;
-    padding: 4rem 0;
+    justify-content: center;
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(2px);
 }
 
-.reserva__content {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 3rem;
-    border-radius: 10px;
-    max-width: 800px;
-    margin: 0 auto;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+.reserva-personalizada__content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem 4rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 75rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.reserva__title {
+.reserva-personalizada__title {
     text-align: center;
-    color: var(--primary-color, #333);
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
-.form__row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.reserva-personalizada__form {
+    display: flex;
+    justify-content: center;
+}
+
+.form-personalizada__group {
+    display: flex;
+    align-items: center;
     gap: 1rem;
+}
+
+.form-personalizada__group label {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.form-personalizada__group input {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
 }

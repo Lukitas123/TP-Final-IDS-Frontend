@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_mail import Mail
-from config import Config 
 from functions import enviar_email_contacto, parse_gallery
 from hardcoded_data import DATA
 import os

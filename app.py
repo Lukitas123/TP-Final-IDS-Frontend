@@ -60,12 +60,22 @@ def contacto():
 
 @app.route("/servicios")
 def servicios():
-
     return render_template("servicios.html", servicios=DATA["servicio"])
 
 
-@app.route("/reserva")
+@app.route("/reserva", methods=['GET', 'POST'])
 def reserva():
+    if request.method == 'POST':
+        nombre = request.form.get("name")
+        email = request.form.get("email")
+        tipo_habitacion = request.form.get("room")
+        servicio = request.form.get("service")
+        actividad = request.form.get("activity")
+        checkin = request.form.get("checkin")
+        checkout = request.form.get("checkout")
+        return redirect(url_for("confirmacion"))
+
+    #si es get
     rooms = DATA["tipo_habitacion"]
     services = DATA["servicio"]
     activities  = DATA["actividad"]
@@ -75,6 +85,10 @@ def reserva():
         "activities": activities,
     }
     return render_template("reserva.html", paquete=None, data=data)
+
+@app.route("/confirmacion")
+def confirmacion():
+    return render_template("confirmacion.html")
 
 
 if __name__ == "__main__":

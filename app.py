@@ -22,7 +22,22 @@ app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER', os.getenv('
 mail = Mail(app)
 
 
+def safe_parse_gallery(gallery_value):
+    if isinstance(gallery_value, list):
+        return gallery_value
+
+    if isinstance(gallery_value, str):
+        try:
+            return json.loads(gallery_value)
+        except ValueError:
+            return []
+    return []
+
+
+
+
 # --- ZONA DE RUTAS ---
+
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -57,12 +72,7 @@ def servicios():
         servicios = json_data.get("data", [])
 
         for service in servicios:
-            gallery_str = service.get("gallery")
-
-            try:
-                service["gallery"] = json.loads(gallery_str)
-            except ValueError:
-                service["gallery"] = []
+            service["gallery"] = safe_parse_gallery(service.get("gallery"))
 
     except Exception as e:
         print("Error al obtener servicios desde el backend:", e)
@@ -70,6 +80,24 @@ def servicios():
     return render_template("servicios.html", servicios=servicios)
 
 
+@app.route("/paquetes")
+def paquetes():
+    paquetes = []
+
+    try:
+        backend_url = "http://backend:5001/api/package"
+        response = requests.get(backend_url)
+
+        json_data = response.json()
+        paquetes = json_data.get("data", [])
+
+        for paquete in paquetes:
+            paquete["gallery"] = safe_parse_gallery(paquete.get("gallery"))
+
+    except Exception as e:
+        print("Error al obtener paquetes desde el backend:", e)
+
+    return render_template("paquetes.html", paquetes=paquetes)
 
 
 
@@ -78,11 +106,6 @@ def habitaciones():
     room_types = parse_gallery(DATA["tipo_habitacion"])
     print(room_types)
     return render_template("habitaciones.html", habitaciones=room_types)
-
-
-@app.route("/paquetes")
-def paquetes():
-    return render_template("paquetes.html", paquetes=DATA["paquete"])
 
 
 @app.route("/contacto", methods=["GET", "POST"])

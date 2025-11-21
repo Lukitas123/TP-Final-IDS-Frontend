@@ -8,15 +8,15 @@
         <div class="cards-container">
             {% for servicio in servicios %}
             <div class="card">
-                <h3 class="card__title" id="card-title-{{ servicio.id }}">{{ servicio.nombre }}</h3>
+                <h3 class="card__title" id="card-title-{{ servicio.id }}">{{ servicio.name }}</h3>
                 <div class="card__body">
                     <div class="card__main-content">
-                        <div class="card__description">{{ servicio.descripcion }}</div>
+                        <div class="card__description">{{ servicio.description }}</div>
                         <div class="card__carousel">
                             <div class="carousel-container" id="carousel-{{ servicio.id }}">
-                            {% for imagen in servicio.galeria %}
+                            {% for imagen in servicio.gallery %}
                                 <div class="carousel-slide">
-                                    <img src="{{ url_for('static', filename=imagen) }}" alt="{{ servicio.nombre }}">
+                                    <img src="{{ url_for('static', filename=imagen) }}" alt="{{ servicio.name }}">
                                 </div>
                             {% endfor %}
                             </div>

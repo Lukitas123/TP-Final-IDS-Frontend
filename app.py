@@ -44,6 +44,24 @@ def actividades():
     return render_template("actividades.html", actividades=actividades)
 
 
+@app.route("/servicios")
+def servicios():
+    servicios = []
+
+    try:
+        backend_url = "http://backend:5001/api/services"
+        response = requests.get(backend_url)
+
+        json_data = response.json()
+        servicios = json_data.get("data", [])
+
+    except Exception as e:
+        print("Error al obtener servicios desde el backend:", e)
+
+    return render_template("servicios.html", servicios=servicios)
+
+
+
 @app.route("/habitaciones")
 def habitaciones():
     room_types = parse_gallery(DATA["tipo_habitacion"])
@@ -70,12 +88,6 @@ def contacto():
         else:
             return redirect(url_for("contacto", status="error"))
     return render_template("contacto.html")
-
-
-@app.route("/servicios")
-def servicios():
-    return render_template("servicios.html", servicios=DATA["servicio"])
-
 
 @app.route("/reserva", methods=['GET', 'POST'])
 def reserva():

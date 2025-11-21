@@ -6,6 +6,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 import requests
+import json
 
 
 app = Flask(__name__)
@@ -55,10 +56,20 @@ def servicios():
         json_data = response.json()
         servicios = json_data.get("data", [])
 
+        for service in servicios:
+            gallery_str = service.get("gallery")
+
+            try:
+                service["gallery"] = json.loads(gallery_str)
+            except ValueError:
+                service["gallery"] = []
+
     except Exception as e:
         print("Error al obtener servicios desde el backend:", e)
 
     return render_template("servicios.html", servicios=servicios)
+
+
 
 
 

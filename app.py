@@ -5,6 +5,8 @@ from hardcoded_data import DATA
 import os
 from dotenv import load_dotenv
 load_dotenv()
+import requests
+
 
 app = Flask(__name__)
 
@@ -27,7 +29,19 @@ def home():
 
 @app.route("/actividades")
 def actividades():
-    return render_template("actividades.html", actividades=DATA["actividad"])
+    actividades = []
+
+    try:
+        backend_url = "http://backend:5001/api/activity"
+        response = requests.get(backend_url)
+
+        json_data = response.json()
+        actividades = json_data.get("data", [])
+
+    except Exception as e:
+        print("Error al obtener actividades desde el backend:", e)
+
+    return render_template("actividades.html", actividades=actividades)
 
 
 @app.route("/habitaciones")

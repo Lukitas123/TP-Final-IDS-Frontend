@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_mail import Mail
 from functions import enviar_email_contacto, parse_gallery
-from hardcoded_data import DATA
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -152,14 +151,38 @@ def reserva():
         return redirect(url_for("confirmacion"))
 
     #si es get
-    rooms = DATA["tipo_habitacion"]
-    services = DATA["servicio"]
-    activities  = DATA["actividad"]
     data = {
-        "rooms": rooms,
-        "services": services,
-        "activities": activities,
+        "rooms": [],
+        "services": [],
+        "activities": [],
     }
+    try:
+        # Fetch room types
+        rooms_response = requests.get("http://backend:5001/room_types")
+        rooms_response.raise_for_status()
+        data["rooms"] = rooms_response.json().get("data", [])
+        for room in data["rooms"]:
+            room["nombre"] = room.get("name")
+
+        # Fetch services
+        services_response = requests.get("http://backend:5001/api/services")
+        services_response.raise_for_status()
+        data["services"] = services_response.json().get("data", [])
+        for service in data["services"]:
+            service["nombre"] = service.get("name")
+
+        # Fetch activities
+        activities_response = requests.get("http://backend:5001/api/activity")
+        activities_response.raise_for_status()
+        data["activities"] = activities_response.json().get("data", [])
+        for activity in data["activities"]:
+            activity["nombre"] = activity.get("name")
+
+    except requests.exceptions.RequestException as e:
+        print("Error fetching data for reservation form:", e)
+    except Exception as e:
+        print("An unexpected error occurred:", e)
+
     return render_template("reserva.html", paquete=None, data=data)
 
 @app.route("/confirmacion")

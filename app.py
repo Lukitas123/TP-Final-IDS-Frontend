@@ -103,8 +103,24 @@ def paquetes():
 
 @app.route("/habitaciones")
 def habitaciones():
-    room_types = parse_gallery(DATA["tipo_habitacion"])
-    print(room_types)
+    room_types = []
+    try:
+        backend_url = "http://backend:5001/room_types"
+        response = requests.get(backend_url)
+        response.raise_for_status()
+        json_data = response.json()
+        room_types = json_data.get("data", [])
+
+        for room in room_types:
+            room["galeria"] = safe_parse_gallery(room.get("gallery"))
+            room["nombre"] = room.get("name")
+            room["descripcion"] = room.get("description")
+
+    except requests.exceptions.RequestException as e:
+        print("Error al obtener tipos de habitación desde el backend:", e)
+    except Exception as e:
+        print("Error inesperado:", e)
+
     return render_template("habitaciones.html", habitaciones=room_types)
 
 

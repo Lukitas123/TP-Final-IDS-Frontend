@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask_mail import Mail
 from functions import enviar_email_contacto, parse_gallery
 import os
@@ -188,6 +188,27 @@ def reserva():
 @app.route("/confirmacion")
 def confirmacion():
     return render_template("confirmacion.html")
+
+
+@app.route("/check-availability")
+def check_availability():
+    checkin = request.args.get('checkin')
+    checkout = request.args.get('checkout')
+
+    if not checkin or not checkout:
+        return jsonify({"error": "Faltan fechas de check-in o check-out."}), 400
+
+    available_ids = []
+    try:
+        backend_url = f"http://backend:5001/availability?checkin={checkin}&checkout={checkout}"
+        response = requests.get(backend_url)
+        data = response.json().get("data", [])
+        available_ids = [room['id'] for room in data]
+        
+    except Exception as e:
+        print(f"Error calling backend availability: {e}")
+
+    return jsonify({"available_room_ids": available_ids})
 
 
 if __name__ == "__main__":

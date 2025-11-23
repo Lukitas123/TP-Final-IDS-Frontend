@@ -47,7 +47,7 @@ def actividades():
     actividades = []
 
     try:
-        backend_url = "http://backend:5001/api/activity"
+        backend_url = "http://backend:5001/activity"
         response = requests.get(backend_url)
 
         json_data = response.json()
@@ -64,7 +64,7 @@ def servicios():
     servicios = []
 
     try:
-        backend_url = "http://backend:5001/api/services"
+        backend_url = "http://backend:5001/services"
         response = requests.get(backend_url)
 
         json_data = response.json()
@@ -84,7 +84,7 @@ def paquetes():
     paquetes = []
 
     try:
-        backend_url = "http://backend:5001/api/package"
+        backend_url = "http://backend:5001/package"
         response = requests.get(backend_url)
 
         json_data = response.json()

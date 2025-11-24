@@ -78,6 +78,39 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
 }
 
+/* Mensaje breve para guiar la selección múltiple */
+.form-personalizada__helper {
+    font-size: 0.9rem;
+    color: #505050;
+    margin: 0;
+}
+
+/* Contenedor flexible para las casillas de servicios/actividades */
+.form-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    justify-content: flex-start;
+}
+
+/* Cada chip mantiene compacto el checkbox y su etiqueta */
+.form-checkboxes__item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid #252525;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.form-checkboxes__item input[type="checkbox"] {
+    width: auto;
+    accent-color: var(--secondary-color);
+}
+
 @media (min-width: 768px) {
     .reserva-personalizada__form {
         flex-direction: row;

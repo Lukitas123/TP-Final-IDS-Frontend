@@ -39,24 +39,30 @@
             </div>
             <div class="form-personalizada__group">
                 <div class="form-personalizada__group-item">
-                    <label for="service">Servicios</label>
-                    <select name="service" id="service" required>
-                        <option value="" disabled selected>Servicios</option>
+                    <label for="services-list">Servicios</label>
+                    <p class="form-personalizada__helper">Elegí uno o varios servicios para sumar a tu estadía.</p>
+                    <div class="form-checkboxes" id="services-list">
                         {% for service in data.services %}
-                        <option value="{{ service.id }}">{{ service.nombre }}</option>
+                        <label class="form-checkboxes__item">
+                            <input type="checkbox" name="services" value="{{ service.id }}">
+                            {{ service.nombre }}
+                        </label>
                         {% endfor %}
-                    </select>
+                    </div>
                 </div>
             </div>
             <div class="form-personalizada__group">
                 <div class="form-personalizada__group-item">
-                    <label for="activity">Actividades</label>
-                    <select name="activity" id="activity" required>
-                        <option value="" disabled selected>Actividades</option>
+                    <label for="activities-list">Actividades</label>
+                    <p class="form-personalizada__helper">Podés seleccionar todas las actividades que quieras.</p>
+                    <div class="form-checkboxes" id="activities-list">
                         {% for activity in data.activities %}
-                        <option value="{{ activity.id }}">{{ activity.nombre }}</option>
+                        <label class="form-checkboxes__item">
+                            <input type="checkbox" name="activities" value="{{ activity.id }}">
+                            {{ activity.nombre }}
+                        </label>
                         {% endfor %}
-                    </select>
+                    </div>
                 </div>
             </div>
             <div class="form-personalizada__group">

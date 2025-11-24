@@ -60,3 +60,57 @@ checkinInput.addEventListener('change', actualizarDisponibilidad);
 checkoutInput.addEventListener('change', actualizarDisponibilidad);
 // Al cargar la página, me aseguro de que el selector de habitaciones esté deshabilitado desde el principio.
 roomSelect.disabled = true;
+
+
+// Listener para el envío del formulario de reserva
+document.querySelector('.reserva-personalizada__form').addEventListener('submit', function(event) {
+    // Evita que el formulario se envíe de la manera tradicional
+    event.preventDefault();
+
+    // Recopila los datos del formulario
+    const checkinDate = document.getElementById('checkin').value;
+    const checkoutDate = document.getElementById('checkout').value;
+    const roomTypeId = document.getElementById('room').value;
+    const serviceId = document.getElementById('service').value;
+    const activityId = document.getElementById('activity').value;
+    const customerName = document.getElementById('name').value;
+    const customerEmail = document.getElementById('email').value;
+
+    // Construye el objeto JSON que se enviará al backend
+    const reservationData = {
+        room_type_id: parseInt(roomTypeId),
+        checkin_date: checkinDate,
+        checkout_date: checkoutDate,
+        customer_name: customerName,
+        customer_email: customerEmail,
+        activity_ids: [parseInt(activityId)],
+        service_ids: [parseInt(serviceId)]
+    };
+
+    // Envía la solicitud POST al backend
+    // ATENCIÓN: La URL 'http://backend:5001/reservations' es para Docker. 
+    // Si ejecutas localmente, deberás cambiarla a 'http://127.0.0.1:5001/reservations' o la que corresponda.
+    fetch('http://backend:5001/reservations', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(reservationData)
+    })
+    .then(response => {
+        if (response.ok) {
+            // Si la reserva es exitosa, redirige a la página de confirmación
+            window.location.href = '/confirmacion';
+        } else {
+            // Si hay un error, lo muestra en la consola
+            response.json().then(data => {
+                console.error('Error al crear la reserva:', data);
+                alert('Hubo un error al procesar la reserva. Por favor, intente de nuevo.');
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error de red:', error);
+        alert('No se pudo conectar con el servidor. Revise su conexión o intente más tarde.');
+    });
+});

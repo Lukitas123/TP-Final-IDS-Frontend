@@ -104,5 +104,20 @@
         font-size: 1.1rem;
         text-align: left;
     }
+    .form-personalizada__button {
+    display: block;
+    margin: 1rem auto 0;
+    padding: 0.85rem 2.5rem;
+    border-radius: 999px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: var(--secondary-color);
+    color: #fff;
+}
 
+.form-personalizada__button:hover {
+    background-color: var(--primary-color);
+}
 }

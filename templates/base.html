@@ -62,13 +62,18 @@
         <div class="nav__search">
           <input
             type="text"
+            id="global-search-input"
             class="search__input"
             placeholder="Buscar..."
             aria-label="Buscar"
+            autocomplete="off"
           />
-          <button class="search__btn" aria-label="Buscar">
-            <i class="fas fa-search"></i> <!-- o un icono SVG si no usas FontAwesome -->
+          <button class="search__btn" aria-label="Buscar" type="button">
+            <i class="fas fa-search"></i>
           </button>
+
+          <!-- Resultados de búsqueda -->
+          <div id="global-search-results" class="search__results"></div>
         </div>
         <button class="hamburger" aria-label="Menú">
           <span class="hamburger__line"></span>
@@ -157,7 +162,14 @@
         </span>
       </div>
     </footer>
+    <script>
+        window.ROOMS_FOR_SEARCH = JSON.parse(`{{ rooms_for_search|tojson|safe }}`);
+        window.SERVICES_FOR_SEARCH = JSON.parse(`{{ services_for_search|tojson|safe }}`);
+        window.ACTIVITIES_FOR_SEARCH = JSON.parse(`{{ activities_for_search|tojson|safe }}`);
+        window.PACKAGES_FOR_SEARCH = JSON.parse(`{{ packages_for_search|tojson|safe }}`);
+    </script>
     <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/search.js') }}"></script>
     {% block scripts %}{% endblock %}
   </body>
 </html>

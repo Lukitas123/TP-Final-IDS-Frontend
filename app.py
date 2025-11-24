@@ -32,7 +32,79 @@ def safe_parse_gallery(gallery_value):
             return []
     return []
 
+@app.context_processor
+def inject_search_data():
+    rooms_for_search = []
+    services_for_search = []
+    activities_for_search = []
+    packages_for_search = []
 
+    try:
+        base_url = "http://backend:5001"
+        # Habitaciones
+        resp_rooms = requests.get(f"{base_url}/room_types", timeout=5)
+        resp_rooms.raise_for_status()
+        data_rooms = resp_rooms.json().get("data", [])
+        for room in data_rooms:
+            nombre = room.get("name") or room.get("nombre")
+            if nombre:
+                rooms_for_search.append({
+                    "id": room.get("id"),
+                    "nombre": nombre,
+                })
+
+        # Servicios
+        resp_services = requests.get(f"{base_url}/services", timeout=5)
+        resp_services.raise_for_status()
+        data_services = resp_services.json().get("data", [])
+        for s in data_services:
+            nombre = s.get("name") or s.get("nombre")
+            if nombre:
+                services_for_search.append({
+                    "id": s.get("id"),
+                    "nombre": nombre,
+                })
+
+        # Actividades 
+        resp_activities = requests.get(f"{base_url}/activity", timeout=5)
+        resp_activities.raise_for_status()
+        data_activities = resp_activities.json().get("data", [])
+        for a in data_activities:
+            nombre = a.get("name") or a.get("nombre")
+            if nombre:
+                activities_for_search.append({
+                    "id": a.get("id"),
+                    "nombre": nombre,
+                })
+
+        # Paquetes
+        resp_packages = requests.get(f"{base_url}/package", timeout=5)
+        resp_packages.raise_for_status()
+        data_packages = resp_packages.json().get("data", [])
+        for p in data_packages:
+            nombre = p.get("name") or p.get("nombre")
+            if nombre:
+                packages_for_search.append({
+                    "id": p.get("id"),
+                    "nombre": nombre,
+                })
+
+        print(
+            f"[inject_search_data] rooms={len(rooms_for_search)}, "
+            f"services={len(services_for_search)}, "
+            f"activities={len(activities_for_search)}, "
+            f"packages={len(packages_for_search)}"
+        )
+
+    except Exception as e:
+        print("Error obteniendo datos para barra de búsqueda:", e)
+
+    return {
+        "rooms_for_search": rooms_for_search,
+        "services_for_search": services_for_search,
+        "activities_for_search": activities_for_search,
+        "packages_for_search": packages_for_search,
+    }
 
 
 # --- ZONA DE RUTAS ---

@@ -13,6 +13,7 @@
   --accent-color: #f5f5f5;
 
   --background-color: #faf8f5;
+  --background-alternate: #acacac;
   --text-color: #2e2e2e;
   --text-light: #777;
   --border-color: #d8d3cc;
@@ -22,7 +23,7 @@
 
   /* Typography */
   --font-family-base: 'Arial', sans-serif;
-  --font-family-heading: 'Montserrat', sans-serif;
+  --font-family-heading: 'Nunito', sans-serif;
   --font-size-base: 1rem;
 
   /* Spacing and dimensions */
@@ -52,7 +53,7 @@ html {
 body {
   font-family: var(--font-family-base);
   color: var(--text-color);
-  background-color: var(--background-color);
+  background-color: var(--primary-color);
   min-height: 100vh;
 }
 
@@ -78,13 +79,13 @@ img {
 .container {
   max-width: var(--container-width);
   margin: 0 auto;
-  padding: 0 var(--spacing-sm);
+  padding: var(--spacing-sm);
 }
 
 /* === DESKTOP MEDIA QUERY === */
 @media (min-width: 768px) {
 
   .container {
-    padding: 0 var(--spacing-lg);
+    padding: var(--spacing-lg);
   }
 }

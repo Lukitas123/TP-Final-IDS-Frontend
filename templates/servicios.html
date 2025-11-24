@@ -1,37 +1,61 @@
 {% extends 'base.html' %}
-{% block title %}home/servicios{% endblock %}
-
+{% block title %}HOTEL BUGBUSTERS - SERVICIOS{%endblock %}
 {% block content %}
-    <div class="container mt-5">
-        <br>
-        <h1 class="page-title">Nuestros servicios</h1><br>
-        <div class="cards-container">
-            {% for servicio in servicios %}
-            <div class="card">
-                <h3 class="card__title" id="card-title-{{ servicio.id }}">{{ servicio.name }}</h3>
-                <div class="card__body">
-                    <div class="card__main-content">
-                        <div class="card__description">{{ servicio.description }}</div>
-                        <div class="card__carousel">
-                            <div class="carousel-container" id="carousel-{{ servicio.id }}">
-                            {% for imagen in servicio.gallery %}
-                                <div class="carousel-slide">
-                                    <img src="{{ url_for('static', filename=imagen) }}" alt="{{ servicio.name }}">
-                                </div>
-                            {% endfor %}
-                            </div>
-                            <button class="carousel-btn prev" onclick="moveSlide('{{ servicio.id }}', -1)">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <button class="carousel-btn next" onclick="moveSlide('{{ servicio.id }}', 1)">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <a href="#" class="card__button card__button--primary">Agregar a reserva</a>
+<section class="video-hero">
+  <video autoplay loop muted class="video-hero__media">
+    <source
+      src="{{ url_for('static', filename='videos/fondo_servicios.mp4') }}"
+      type="video/mp4"
+    />
+  </video>
+  <div class="video-hero__content">
+    <h1 class="video-hero__title">Servicios que Marcan la Diferencia</h1>
+    <p class="video-hero__description">
+      Todo lo que necesitás para una estadía perfecta.
+    </p>
+  </div>
+</section>
+<section class="background-section">
+  <div class="container">
+    <div class="page-title">Nuestros Servicios</div>
+    <div class="cards-container">
+      {% for servicio in servicios %}
+      <div class="card">
+        <h3 class="card__title" id="card-title-{{ servicio.id }}">
+          {{ servicio.name }}
+        </h3>
+        <div class="card__body">
+          <div class="card__main-content">
+            <div class="card__description">{{ servicio.description }}</div>
+            <div class="card__carousel">
+              <div class="carousel-container" id="carousel-{{ servicio.id }}">
+                {% for imagen in servicio.gallery %}
+                <div class="carousel-slide">
+                  <img
+                    src="{{ url_for('static', filename=imagen) }}"
+                    alt="{{ servicio.name }}"
+                  />
                 </div>
+                {% endfor %}
+              </div>
+              <button
+                class="carousel-btn prev"
+                onclick="moveSlide('{{ servicio.id }}', -1)"
+              >
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button
+                class="carousel-btn next"
+                onclick="moveSlide('{{ servicio.id }}', 1)"
+              >
+                <i class="fas fa-chevron-right"></i>
+              </button>
             </div>
-            {% endfor %}
+          </div>
         </div>
+      </div>
+      {% endfor %}
     </div>
+  </div>
+</section>
 {% endblock %}

@@ -148,7 +148,7 @@ nav {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xl);
-  padding: var(--spacing-xl);
+  padding: var(--spacing-md);
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -157,7 +157,7 @@ nav {
 .card {
   background-color: var(--background-color);
   border-radius: var(--border-radius);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow);
   overflow: hidden;
   transition: all 0.3s ease;
   display: flex;
@@ -174,6 +174,7 @@ nav {
   padding: var(--spacing-lg) var(--spacing-xl);
   margin: 0;
   color: var(--text-color);
+  text-align: center;
   font-size: 2rem;
   font-weight: 600;
   border-bottom: 1px solid rgba(var(--border-color-rgb), 0.1);
@@ -181,7 +182,6 @@ nav {
 
 .card__body {
   padding: var(--spacing-lg);
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
@@ -190,72 +190,95 @@ nav {
   display: flex;
   gap: var(--spacing-xl);
   margin-bottom: var(--spacing-lg);
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
 }
 
-.card__carousel {
-  width: 40%;
-  aspect-ratio: 4/3;
-  background-color: var(--secondary-color);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  flex-shrink: 0;
+.card__side-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  width: 100%;
 }
 
 .card__description {
   color: var(--text-color);
-  line-height: 1.8;
   font-size: 1.1rem;
-  flex-grow: 1;
-  padding-right: var(--spacing-xl);
+  text-align: justify;
 }
 
-/* Card Button */
-.card__button {
-  display: inline-block;
-  text-decoration: none;
-  padding: var(--spacing-md) var(--spacing-xl);
+/* === CARRUSEL DE IMÁGENES DENTRO DE CARD === */
+
+.card__carousel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
   border-radius: var(--border-radius);
-  text-align: center;
-  transition: all 0.3s ease;
-  align-self: flex-end;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  
+  background-color: var(--secondary-color);
 }
 
-.card__button--primary {
-  background-color: var(--primary-color);
-  color: var(--text-light);
+/* Contenedor de las imágenes que se deslizan */
+.carousel-container {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
 }
 
-.card__button--primary:hover {
-  background-color: var(--primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(var(--primary-color-rgb), 0.2);
-  text-decoration: none;
+/* Cada slide ocupa exactamente su cuadrado completo */
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Imágenes cuadradas sin deformación, recortadas si es necesario */
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* recorta para llenar el espacio sin deformarse */
+  object-position: center; /* centra la parte visible */
+  border-radius: var(--border-radius);
+  display: block;
 }
 
 /* --- BOTÓN --- */
-.btn-cta {
-  display: inline-block;
-  background-color: var(--secondary-color);
-  color: var(--accent-color);
-  padding: 0.8rem 2rem;
+.btn-cta,
+.btn-secondary {
+  padding: var(--spacing-md) var(--spacing-xl); /* Hacemos los botones más grandes */
   border-radius: var(--border-radius);
-  font-weight: 600;
-  font-family: var(--font-family-heading);
-  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1rem; /* Aseguramos un buen tamaño de fuente */
   transition: var(--transition);
-  box-shadow: var(--box-shadow);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-cta {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: 2px solid var(--secondary-color);
 }
 
 .btn-cta:hover {
-  background-color: var(--primary-color);
-  transform: translateY(-3px);
+  background-color: transparent;
+  color: var(--secondary-color);
+}
+
+.btn-secondary {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  border: 2px solid var(--accent-color);
+}
+
+.btn-secondary:hover {
+  background-color: transparent;
   color: var(--accent-color);
+  border: 2px solid var(--accent-color);
 }
 
 /* === DESKTOP MEDIA QUERY === */
@@ -318,15 +341,41 @@ nav {
 
   /* --- Cards --- */
   .card__main-content {
-    flex-direction: column;
+    flex-direction: row;
+    align-items: stretch;
   }
 
   .card__carousel {
-    width: 100%;
+    width: 55%;
+    aspect-ratio: 4 / 3;
+    max-height: 350px;
+  }
+
+  .card__side-info {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    padding-right: var(--spacing-xl);
   }
 
   .card__description {
-    padding-right: 0;
+    width: 45%;
+    padding-right: var(--spacing-xl);
+    display: flex;
+    align-items: center;
+  }
+
+  .card__description--activity {
+    display: flex;
+    align-items: center;
+  }
+
+  .card__schedule,
+  .card__price {
+    font-size: 1.1rem;
+    color: var(--text-color);
   }
 
   .card__title {
@@ -399,42 +448,7 @@ nav {
   text-decoration: none;
 }
 
-/* === CARRUSEL DE IMÁGENES DENTRO DE CARD === */
-.card__carousel {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 2 / 1; /* rectangulo 2x1 */
-  overflow: hidden;
-  border-radius: var(--border-radius);
-  background-color: var(--secondary-color);
-}
 
-/* Contenedor de las imágenes que se deslizan */
-.carousel-container {
-  display: flex;
-  height: 100%;
-  transition: transform 0.5s ease-in-out;
-}
-
-/* Cada slide ocupa exactamente su cuadrado completo */
-.carousel-slide {
-  min-width: 100%;
-  height: 100%;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Imágenes cuadradas sin deformación, recortadas si es necesario */
-.carousel-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* recorta para llenar el espacio sin deformarse */
-  object-position: center; /* centra la parte visible */
-  border-radius: var(--border-radius);
-  display: block;
-}
 
 /* Botones del carrusel */
 .carousel-btn {

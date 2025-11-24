@@ -211,5 +211,10 @@ def check_availability():
     return jsonify({"available_room_ids": available_ids})
 
 
+@app.errorhandler(404)
+def errorhandler(e):
+    return render_template('404.html')
+
+
 if __name__ == "__main__":
     app.run("localhost", 3000, debug=True)

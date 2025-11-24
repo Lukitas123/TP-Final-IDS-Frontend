@@ -393,8 +393,34 @@
 }
 
 /* ===========================
-   SECCIÓN - MAPA
+   PAGE ERROR 404
    =========================== */
+
+.error-page {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+  font-family: var(--font-family-heading);
+}
+
+.error-page h1 {
+  font-size: 2.4rem;
+  margin-bottom: 15px;
+  color: var(--primary-color)
+}
+
+.error-page p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+
+.error-page h2 {
+  font-style: italic;
+  margin-top: 30px;
+  color: var(--primary-color);
+}
 
 /* ================= FOOTER ================= */
 

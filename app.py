@@ -165,14 +165,14 @@ def reserva():
             room["nombre"] = room.get("name")
 
         # Fetch services
-        services_response = requests.get("http://backend:5001/api/services")
+        services_response = requests.get("http://backend:5001/services")
         services_response.raise_for_status()
         data["services"] = services_response.json().get("data", [])
         for service in data["services"]:
             service["nombre"] = service.get("name")
 
         # Fetch activities
-        activities_response = requests.get("http://backend:5001/api/activity")
+        activities_response = requests.get("http://backend:5001/activity")
         activities_response.raise_for_status()
         data["activities"] = activities_response.json().get("data", [])
         for activity in data["activities"]:

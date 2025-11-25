@@ -73,6 +73,8 @@ document.querySelector('.reserva-personalizada__form').addEventListener('submit'
     const roomTypeId = document.getElementById('room').value;
     const customerName = document.getElementById('name').value;
     const customerEmail = document.getElementById('email').value;
+    const adults = parseInt(document.getElementById('adults').value, 10);
+    const children = parseInt(document.getElementById('children').value, 10);
     const serviceIds = [];
     const activityIds = [];
 
@@ -91,6 +93,16 @@ document.querySelector('.reserva-personalizada__form').addEventListener('submit'
         return;
     }
 
+    if (!Number.isInteger(adults) || adults < 1) {
+        alert('Indicá al menos un adulto para la reserva.');
+        return;
+    }
+
+    if (!Number.isInteger(children) || children < 0) {
+        alert('La cantidad de menores no puede ser negativa.');
+        return;
+    }
+
     // Construye el objeto JSON que se enviará al backend
     const reservationData = {
         room_type_id: parseInt(roomTypeId),
@@ -98,6 +110,8 @@ document.querySelector('.reserva-personalizada__form').addEventListener('submit'
         checkout_date: checkoutDate,
         customer_name: customerName,
         customer_email: customerEmail,
+        adults: adults,
+        children: children,
         activity_ids: activityIds,
         service_ids: serviceIds
     };

@@ -71,10 +71,37 @@ document.querySelector('.reserva-personalizada__form').addEventListener('submit'
     const checkinDate = document.getElementById('checkin').value;
     const checkoutDate = document.getElementById('checkout').value;
     const roomTypeId = document.getElementById('room').value;
-    const serviceId = document.getElementById('service').value;
-    const activityId = document.getElementById('activity').value;
     const customerName = document.getElementById('name').value;
     const customerEmail = document.getElementById('email').value;
+    const adults = parseInt(document.getElementById('adults').value, 10);
+    const children = parseInt(document.getElementById('children').value, 10);
+    const serviceIds = [];
+    const activityIds = [];
+
+    // Junto todos los servicios chequeados
+    document.querySelectorAll('input[name="services"]:checked').forEach((input) => {
+        serviceIds.push(parseInt(input.value, 10));
+    });
+
+    // Junto todas las actividades chequeadas
+    document.querySelectorAll('input[name="activities"]:checked').forEach((input) => {
+        activityIds.push(parseInt(input.value, 10));
+    });
+
+    if (!serviceIds.length || !activityIds.length) {
+        alert('Seleccioná al menos un servicio y una actividad.');
+        return;
+    }
+
+    if (!Number.isInteger(adults) || adults < 1) {
+        alert('Indicá al menos un adulto para la reserva.');
+        return;
+    }
+
+    if (!Number.isInteger(children) || children < 0) {
+        alert('La cantidad de menores no puede ser negativa.');
+        return;
+    }
 
     // Construye el objeto JSON que se enviará al backend
     const reservationData = {
@@ -83,8 +110,10 @@ document.querySelector('.reserva-personalizada__form').addEventListener('submit'
         checkout_date: checkoutDate,
         customer_name: customerName,
         customer_email: customerEmail,
-        activity_ids: [parseInt(activityId)],
-        service_ids: [parseInt(serviceId)]
+        adults: adults,
+        children: children,
+        activity_ids: activityIds,
+        service_ids: serviceIds
     };
 
     // Envía la solicitud POST al backend

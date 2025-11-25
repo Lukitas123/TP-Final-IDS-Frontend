@@ -9,8 +9,77 @@
     </video>
 </div>
 
-{% if paquete.id %}
-<section class="reserva__section"></section>
+{% if paquete %}
+<section class="reserva-personalizada__section">
+    <div class="reserva-personalizada__content">
+        <h1 class="reserva-personalizada__title">Reservar Paquete: {{ paquete.name }}</h1>
+
+        <div class="package-details-summary">
+            <p><strong>Descripción:</strong> {{ paquete.description | replace('\n', '<br />') | safe }}</p>
+            <p><strong>Duración:</strong> {{ paquete.nights }} noches</p>
+            {% if paquete.room_type %}
+            <p><strong>Tipo de Habitación:</strong> {{ paquete.room_type.name }}</p>
+            {% endif %}
+            {% if paquete.activities %}
+            <p><strong>Actividades Incluidas:</strong>
+                <ul>
+                    {% for activity in paquete.activities %}
+                    <li>{{ activity.name }}</li>
+                    {% endfor %}
+                </ul>
+            </p>
+            {% endif %}
+            {% if paquete.services %}
+            <p><strong>Servicios Incluidos:</strong>
+                <ul>
+                    {% for service in paquete.services %}
+                    <li>{{ service.name }}</li>
+                    {% endfor %}
+                </ul>
+            </p>
+            {% endif %}
+            <p class="package-price"><strong>Precio Total del Paquete:</strong> ${{ paquete.price }}</p>
+        </div>
+
+        <form class="reserva-paquete__form" id="form-reserva-paquete" action="{{ url_for('reserva') }}" method="POST"
+              data-paquete-id="{{ paquete.id }}"
+              data-room-type-id="{{ paquete.room_type.id if paquete.room_type else '' }}"
+              data-nights="{{ paquete.nights }}">
+            <div class="form-personalizada__group">
+                <div class="form-personalizada__group-item">
+                    <label for="checkin-paquete">Check-in</label>
+                    <input type="date" id="checkin-paquete" name="checkin_date" required>
+                </div>
+                <div class="form-personalizada__group-item">
+                    <label for="checkout-paquete">Check-out (automático)</label>
+                    <input type="date" id="checkout-paquete" name="checkout_date" readonly>
+                </div>
+            </div>
+            <div class="form-personalizada__group">
+                <div class="form-personalizada__group-item">
+                    <label for="adults-paquete">Adultos</label>
+                    <input type="number" id="adults-paquete" name="adults" min="1" value="2" required>
+                </div>
+                <div class="form-personalizada__group-item">
+                    <label for="children-paquete">Menores</label>
+                    <input type="number" id="children-paquete" name="children" min="0" value="0" required>
+                </div>
+            </div>
+            <div class="form-personalizada__group">
+                <div class="form-personalizada__group-item">
+                    <label for="name-paquete">Nombre Completo</label>
+                    <input type="text" id="name-paquete" name="customer_name" required>
+                </div>
+                <div class="form-personalizada__group-item">
+                    <label for="email-paquete">Email</label>
+                    <input type="email" id="email-paquete" name="customer_email" required>
+                </div>
+            </div>
+            <div id="availability-message" style="margin-top: 1rem; text-align: center; font-weight: bold;"></div>
+            <button type="submit" id="btn-reservar-paquete" class="form-personalizada__button" disabled>¡Reservar Paquete!</button>
+        </form>
+    </div>
+</section>
 {% else %}
 <section class="reserva-personalizada__section">
     <div class="reserva-personalizada__content">
@@ -94,5 +163,9 @@
 {% endblock %}
 
 {% block scripts %}
+{% if paquete %}
+<script src="{{ url_for('static', filename='scripts/reserva_paquete.js') }}"></script>
+{% else %}
 <script src="{{ url_for('static', filename='scripts/reserva.js') }}"></script>
+{% endif %}
 {% endblock %}

@@ -141,49 +141,78 @@ def contacto():
 @app.route("/reserva", methods=['GET', 'POST'])
 def reserva():
     if request.method == 'POST':
-        nombre = request.form.get("name")
-        email = request.form.get("email")
-        tipo_habitacion = request.form.get("room")
-        servicio = request.form.get("service")
-        actividad = request.form.get("activity")
-        checkin = request.form.get("checkin")
-        checkout = request.form.get("checkout")
+        # Esta parte del POST es manejada por JavaScript que hace la llamada directa al backend.
+        # Aquí solo redirigimos a la confirmación si el POST llega a este endpoint directamente.
+        # La lógica de formulario real está en el JS.
         return redirect(url_for("confirmacion"))
 
-    #si es get
-    data = {
-        "rooms": [],
-        "services": [],
-        "activities": [],
-    }
-    try:
-        # Fetch room types
-        rooms_response = requests.get("http://backend:5001/room_types")
-        rooms_response.raise_for_status()
-        data["rooms"] = rooms_response.json().get("data", [])
-        for room in data["rooms"]:
-            room["nombre"] = room.get("name")
+    # Si es GET
+    paquete_id = request.args.get('paquete_id')
+    paquete_data = None
 
-        # Fetch services
-        services_response = requests.get("http://backend:5001/services")
-        services_response.raise_for_status()
-        data["services"] = services_response.json().get("data", [])
-        for service in data["services"]:
-            service["nombre"] = service.get("name")
+    if paquete_id:
+        # Flujo de reserva por paquete
+        try:
+            backend_url = f"http://backend:5001/package/{paquete_id}"
+            response = requests.get(backend_url)
+            response.raise_for_status() # Lanza una excepción para errores HTTP (4xx o 5xx)
+            json_response = response.json()
+            if json_response.get("status") == "success":
+                paquete_data = json_response.get("data")
+                # Asegurarse de que las galerías se parseen correctamente si son strings JSON
+                if paquete_data:
+                    paquete_data["gallery"] = safe_parse_gallery(paquete_data.get("gallery"))
+                    if paquete_data.get("room_type"):
+                        paquete_data["room_type"]["gallery"] = safe_parse_gallery(paquete_data["room_type"].get("gallery"))
+            else:
+                print(f"Error del backend al obtener paquete: {json_response.get('message')}")
+                # Podrías agregar un flash message o algo más amigable
+                return redirect(url_for("paquetes", status="package_error")) # Redirigir con error
+        except requests.exceptions.RequestException as e:
+            print(f"Error de conexión al obtener paquete {paquete_id} desde el backend: {e}")
+            # Podrías agregar un flash message o algo más amigable
+            return redirect(url_for("paquetes", status="package_error")) # Redirigir con error
+        except Exception as e:
+            print(f"Error inesperado al procesar el paquete {paquete_id}: {e}")
+            # Podrías agregar un flash message o algo más amigable
+            return redirect(url_for("paquetes", status="package_error")) # Redirigir con error
 
-        # Fetch activities
-        activities_response = requests.get("http://backend:5001/activity")
-        activities_response.raise_for_status()
-        data["activities"] = activities_response.json().get("data", [])
-        for activity in data["activities"]:
-            activity["nombre"] = activity.get("name")
+        return render_template("reserva.html", paquete=paquete_data, data=None)
+    else:
+        # Flujo de reserva personalizada (el que ya existía)
+        data = {
+            "rooms": [],
+            "services": [],
+            "activities": [],
+        }
+        try:
+            # Fetch room types
+            rooms_response = requests.get("http://backend:5001/room_types")
+            rooms_response.raise_for_status()
+            data["rooms"] = rooms_response.json().get("data", [])
+            for room in data["rooms"]:
+                room["nombre"] = room.get("name")
 
-    except requests.exceptions.RequestException as e:
-        print("Error fetching data for reservation form:", e)
-    except Exception as e:
-        print("An unexpected error occurred:", e)
+            # Fetch services
+            services_response = requests.get("http://backend:5001/services")
+            services_response.raise_for_status()
+            data["services"] = services_response.json().get("data", [])
+            for service in data["services"]:
+                service["nombre"] = service.get("name")
 
-    return render_template("reserva.html", paquete=None, data=data)
+            # Fetch activities
+            activities_response = requests.get("http://backend:5001/activity")
+            activities_response.raise_for_status()
+            data["activities"] = activities_response.json().get("data", [])
+            for activity in data["activities"]:
+                activity["nombre"] = activity.get("name")
+
+        except requests.exceptions.RequestException as e:
+            print("Error fetching data for reservation form:", e)
+        except Exception as e:
+            print("An unexpected error occurred:", e)
+
+        return render_template("reserva.html", paquete=None, data=data)
 
 @app.route("/confirmacion")
 def confirmacion():

@@ -141,8 +141,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     customer_email: customerEmail,
                     adults: adults,
                     children: children
-                }
-                fetch ('/confirmacion-mail', {
+                };
+                fetch ('/confirmacion_mail', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

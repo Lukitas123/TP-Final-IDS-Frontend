@@ -142,8 +142,8 @@ document.querySelector('.reserva-personalizada__form').addEventListener('submit'
                 children: children,
                 activity_ids: activityIds,
                 service_ids: serviceIds
-            }
-            fetch ('/confirmacion-mail', {
+            };
+            fetch ('/confirmacion_mail', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

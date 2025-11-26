@@ -1,6 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from config import init_config
 from extensions import mail
+
+from flask_mail import Message
 
 # Blueprints
 from routes.home import bp_home
@@ -41,7 +43,7 @@ def confirmacion_mail():
     email_cliente = datos_reserva.get("costumer_Email")
     if (tipo_reserva == "paquete"):
         backend_url = "http://backend:5001/package"
-        response = requests.get(backend_url)
+        response = request.get(backend_url)
         json_data = response.json()
         paquetes = json_data.get("data", [])
 
@@ -61,7 +63,7 @@ def confirmacion_mail():
         """
     else:
         backend_url = "http://backend:5001/room_types"
-        response = requests.get(backend_url)
+        response = request.get(backend_url)
         response.raise_for_status()
         json_data = response.json()
         room_types = json_data.get("data", [])

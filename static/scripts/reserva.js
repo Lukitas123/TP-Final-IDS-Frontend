@@ -129,6 +129,25 @@ document.querySelector('.reserva-personalizada__form').addEventListener('submit'
     .then(response => {
         if (response.ok) {
             // Si la reserva es exitosa, redirige a la página de confirmación
+            const reservationMailData = {
+                reservation_type: "personalizada",
+                roomTypeId: arseInt(roomTypeId),
+                checkin_date: checkinDate,
+                checkout_date: checkoutDate,
+                customer_name: customerName,
+                customer_email: customerEmail,
+                adults: adults,
+                children: children,
+                activity_ids: activityIds,
+                service_ids: serviceIds
+            }
+            fetch ('/confirmacion-mail', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(reservationMailData)
+            });
             window.location.href = '/confirmacion';
         } else {
             // Si hay un error, lo muestra en la consola

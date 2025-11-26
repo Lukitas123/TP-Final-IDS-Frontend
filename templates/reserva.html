@@ -84,7 +84,7 @@
 <section class="reserva-personalizada__section">
     <div class="reserva-personalizada__content">
         <h1 class="reserva-personalizada__title">Reservá tu estadía</h1>
-        <form class="reserva-personalizada__form" action="{{ url_for('reserva.reserva') }}" method="POST">
+        <form class="reserva-personalizada__form" action="{{ url_for('reserva.reserva') }}" method="POST" data-backend-url="{{ public_backend_url }}">
             <div class="form-personalizada__group">
                 <div class="form-personalizada__group-item">
                     <label for="checkin">Check-in</label>

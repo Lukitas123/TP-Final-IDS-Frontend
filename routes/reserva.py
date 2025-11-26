@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, current_app
 from services.backend_api import api_get
 from services.gallery import safe_parse_gallery
 
@@ -12,6 +12,7 @@ def reserva():
         return redirect(url_for("reserva.confirmacion"))
 
     paquete_id = request.args.get("paquete_id")
+    public_backend_url = current_app.config.get("PUBLIC_BACKEND_URL")
 
     if paquete_id:
         data = api_get(f"package/{paquete_id}")
@@ -26,7 +27,7 @@ def reserva():
                 data["room_type"].get("gallery")
             )
 
-        return render_template("reserva.html", paquete=data, data=None)
+        return render_template("reserva.html", paquete=data, data=None, public_backend_url=public_backend_url)
 
     data = {
         "rooms": api_get("room_types"),
@@ -43,7 +44,7 @@ def reserva():
     for activity in data["activities"]:
         activity["nombre"] = activity.get("name")
 
-    return render_template("reserva.html", paquete=None, data=data)
+    return render_template("reserva.html", paquete=None, data=data, public_backend_url=public_backend_url)
 
 
 @bp_reserva.route("/confirmacion")

@@ -12,4 +12,9 @@ def init_config(app):
     app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
     app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
     app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER', os.getenv('MAIL_USERNAME'))
+
+    # URLs del Backend
+    app.config['INTERNAL_BACKEND_URL'] = os.getenv('INTERNAL_BACKEND_URL')
+    app.config['PUBLIC_BACKEND_URL'] = os.getenv('PUBLIC_BACKEND_URL')
+
     return Mail(app)

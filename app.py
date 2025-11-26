@@ -17,9 +17,10 @@ app.config['MAIL_USE_TLS'] = os.getenv('MAIL_USE_TLS', 'true').lower() in ['true
 app.config['MAIL_USE_SSL'] = os.getenv('MAIL_USE_SSL', 'false').lower() in ['true', '1', 't']
 app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
-app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER', os.getenv('MAIL_USERNAME')) 
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER', os.getenv('MAIL_USERNAME'))
+INTERNAL_BACKEND_URL = os.getenv('INTERNAL_BACKEND_URL')
+PUBLIC_BACKEND_URL = os.getenv('PUBLIC_BACKEND_URL')
 mail = Mail(app)
-
 
 def safe_parse_gallery(gallery_value):
     if isinstance(gallery_value, list):
@@ -40,7 +41,7 @@ def inject_search_data():
     packages_for_search = []
 
     try:
-        base_url = "http://backend:5001"
+        base_url = INTERNAL_BACKEND_URL
         # Habitaciones
         resp_rooms = requests.get(f"{base_url}/room_types", timeout=5)
         resp_rooms.raise_for_status()
@@ -119,7 +120,7 @@ def actividades():
     actividades = []
 
     try:
-        backend_url = "http://backend:5001/activity"
+        backend_url = f"{INTERNAL_BACKEND_URL}/activity"
         response = requests.get(backend_url)
 
         json_data = response.json()
@@ -136,7 +137,7 @@ def servicios():
     servicios = []
 
     try:
-        backend_url = "http://backend:5001/services"
+        backend_url = f"{INTERNAL_BACKEND_URL}/services"
         response = requests.get(backend_url)
 
         json_data = response.json()
@@ -156,7 +157,7 @@ def paquetes():
     paquetes = []
 
     try:
-        backend_url = "http://backend:5001/package"
+        backend_url = f"{INTERNAL_BACKEND_URL}/package"
         response = requests.get(backend_url)
 
         json_data = response.json()
@@ -176,7 +177,7 @@ def paquetes():
 def habitaciones():
     room_types = []
     try:
-        backend_url = "http://backend:5001/room_types"
+        backend_url = f"{INTERNAL_BACKEND_URL}/room_types"
         response = requests.get(backend_url)
         response.raise_for_status()
         json_data = response.json()
@@ -225,7 +226,7 @@ def reserva():
     if paquete_id:
         # Flujo de reserva por paquete
         try:
-            backend_url = f"http://backend:5001/package/{paquete_id}"
+            backend_url = f"{INTERNAL_BACKEND_URL}/package/{paquete_id}"
             response = requests.get(backend_url)
             response.raise_for_status() # Lanza una excepción para errores HTTP (4xx o 5xx)
             json_response = response.json()
@@ -249,7 +250,7 @@ def reserva():
             # Podrías agregar un flash message o algo más amigable
             return redirect(url_for("paquetes", status="package_error")) # Redirigir con error
 
-        return render_template("reserva.html", paquete=paquete_data, data=None)
+        return render_template("reserva.html", paquete=paquete_data, data=None, public_backend_url=PUBLIC_BACKEND_URL)
     else:
         # Flujo de reserva personalizada (el que ya existía)
         data = {
@@ -259,21 +260,21 @@ def reserva():
         }
         try:
             # Fetch room types
-            rooms_response = requests.get("http://backend:5001/room_types")
+            rooms_response = requests.get(f"{INTERNAL_BACKEND_URL}/room_types")
             rooms_response.raise_for_status()
             data["rooms"] = rooms_response.json().get("data", [])
             for room in data["rooms"]:
                 room["nombre"] = room.get("name")
 
             # Fetch services
-            services_response = requests.get("http://backend:5001/services")
+            services_response = requests.get(f"{INTERNAL_BACKEND_URL}/services")
             services_response.raise_for_status()
             data["services"] = services_response.json().get("data", [])
             for service in data["services"]:
                 service["nombre"] = service.get("name")
 
             # Fetch activities
-            activities_response = requests.get("http://backend:5001/activity")
+            activities_response = requests.get(f"{INTERNAL_BACKEND_URL}/activity")
             activities_response.raise_for_status()
             data["activities"] = activities_response.json().get("data", [])
             for activity in data["activities"]:
@@ -284,7 +285,7 @@ def reserva():
         except Exception as e:
             print("An unexpected error occurred:", e)
 
-        return render_template("reserva.html", paquete=None, data=data)
+        return render_template("reserva.html", paquete=None, data=data, public_backend_url=PUBLIC_BACKEND_URL)
 
 @app.route("/confirmacion")
 def confirmacion():
@@ -301,7 +302,7 @@ def check_availability():
 
     available_ids = []
     try:
-        backend_url = f"http://backend:5001/availability?checkin={checkin}&checkout={checkout}"
+        backend_url = f"{INTERNAL_BACKEND_URL}/availability?checkin={checkin}&checkout={checkout}"
         response = requests.get(backend_url)
         data = response.json().get("data", [])
         available_ids = [room['id'] for room in data]

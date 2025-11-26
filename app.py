@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-from flask import Flask, render_template, request, redirect, url_for, jsonify
-from flask_mail import Mail, Message
-from functions import enviar_email_contacto, parse_gallery
-import os
-from dotenv import load_dotenv
-load_dotenv()
-import requests
-import json
-=======
 from flask import Flask, render_template
 from config import init_config
 from extensions import mail
@@ -22,7 +12,6 @@ from routes.contacto import bp_contacto
 from routes.reserva import bp_reserva
 from routes.availability import bp_availability
 from routes.context_processor import bp_context
->>>>>>> origin/main
 
 
 app = Flask(__name__)

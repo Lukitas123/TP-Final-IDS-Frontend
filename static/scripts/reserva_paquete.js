@@ -130,17 +130,15 @@ document.addEventListener('DOMContentLoaded', function () {
             const result = await response.json();
 
             if (response.ok) {
-
-                alert('¡Reserva de paquete creada con éxito!');
                 const reservationMailData = {
-                    reservation_type: "paquete",
-                    package_id: parseInt(paqueteId, 10),
-                    checkin_date: checkinDate,
-                    checkout_date: checkoutDate,
-                    customer_name: customerName,
-                    customer_email: customerEmail,
-                    adults: adults,
-                    children: children
+                    "reservation_type": 'paquete',
+                    "package_id": parseInt(paqueteId, 10),
+                    "checkin_date": checkinDate,
+                    "checkout_date": checkoutDate,
+                    "customer_name": customerName,
+                    "customer_email": customerEmail,
+                    "adults": adults,
+                    "children": children
                 };
                 fetch ('/confirmacion_mail', {
                     method: 'POST',
@@ -149,6 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     },
                     body: JSON.stringify(reservationMailData)
                 });
+                alert('¡Reserva de paquete creada con éxito!');
                 window.location.href = '/confirmacion';
             } else {
                 alert(`Error al crear la reserva: ${result.message || 'Error desconocido'}`);

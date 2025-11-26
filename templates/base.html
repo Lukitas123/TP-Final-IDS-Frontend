@@ -82,22 +82,22 @@
         </button>
         <ul class="nav__list">
           <li class="nav__item">
-            <a class="nav__link" href="{{ url_for('home') }}"">HOME</a>
+            <a class="nav__link" href="{{ url_for('home.index') }}">HOME</a>
           </li>
           <li class="nav__item">
-            <a class="nav__link" href="{{ url_for('paquetes') }}">PAQUETES</a>
+            <a class="nav__link" href="{{ url_for('paquetes.paquetes') }}">PAQUETES</a>
           </li>
           <li class="nav__item">
-            <a class="nav__link" href="{{ url_for('habitaciones') }}"">HABITACIONES</a>
+            <a class="nav__link" href="{{ url_for('habitaciones.habitaciones') }}">HABITACIONES</a>
           </li>
           <li class="nav__item">
-            <a class="nav__link" href="{{ url_for('servicios') }}">SERVICIOS</a>
+            <a class="nav__link" href="{{ url_for('servicios.servicios') }}">SERVICIOS</a>
           </li>
           <li class="nav__item">
-            <a class="nav__link" href="{{ url_for('actividades') }}">ACTIVIDADES</a>
+            <a class="nav__link" href="{{ url_for('actividades.actividades') }}">ACTIVIDADES</a>
           </li>
           <li class="nav__item">
-            <a class="nav__link" href="{{ url_for('contacto') }}">CONTACTO</a>
+            <a class="nav__link" href="{{ url_for('contacto.contacto') }}">CONTACTO</a>
           </li>
         </ul>
       </nav>

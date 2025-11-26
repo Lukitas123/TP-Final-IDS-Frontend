@@ -5,7 +5,7 @@
 
 <div class="reserva__background">
     <video autoplay loop muted class="background__video">
-        <source src="{{ url_for('static', filename='/videos/fondo_reserva.mp4') }}" type="video/mp4">
+        <source src="{{ url_for('static', filename='videos/fondo_reserva.mp4') }}" type="video/mp4">
     </video>
 </div>
 
@@ -41,7 +41,7 @@
             <p class="package-price"><strong>Precio Total del Paquete:</strong> ${{ paquete.price }}</p>
         </div>
 
-        <form class="reserva-paquete__form" id="form-reserva-paquete" action="{{ url_for('reserva') }}" method="POST"
+        <form class="reserva-paquete__form" id="form-reserva-paquete" action="{{ url_for('reserva.reserva') }}" method="POST"
               data-paquete-id="{{ paquete.id }}"
               data-room-type-id="{{ paquete.room_type.id if paquete.room_type else '' }}"
               data-nights="{{ paquete.nights }}">
@@ -84,7 +84,7 @@
 <section class="reserva-personalizada__section">
     <div class="reserva-personalizada__content">
         <h1 class="reserva-personalizada__title">Reservá tu estadía</h1>
-        <form class="reserva-personalizada__form" action="{{ url_for('reserva') }}" method="POST" data-backend-url="{{ public_backend_url }}">
+        <form class="reserva-personalizada__form" action="{{ url_for('reserva.reserva') }}" method="POST" data-backend-url="{{ public_backend_url }}">
             <div class="form-personalizada__group">
                 <div class="form-personalizada__group-item">
                     <label for="checkin">Check-in</label>

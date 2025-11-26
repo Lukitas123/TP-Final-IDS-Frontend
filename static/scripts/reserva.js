@@ -103,6 +103,10 @@ document.querySelector('.reserva-personalizada__form').addEventListener('submit'
         return;
     }
 
+    // Obtener la URL base del backend desde el atributo data del formulario
+    const form = event.target;
+    const backendUrl = form.dataset.backendUrl;
+
     // Construye el objeto JSON que se enviará al backend
     const reservationData = {
         room_type_id: parseInt(roomTypeId),
@@ -117,9 +121,7 @@ document.querySelector('.reserva-personalizada__form').addEventListener('submit'
     };
 
     // Envía la solicitud POST al backend
-    // ATENCIÓN: La URL 'http://backend:5001/reservations' es para Docker. 
-    // Si ejecutas localmente, deberás cambiarla a 'http://127.0.0.1:5001/reservations' o la que corresponda.
-    fetch('http://backend:5001/reservations', {
+    fetch(`${backendUrl}/reservations`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

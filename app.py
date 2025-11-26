@@ -30,7 +30,7 @@ app.register_blueprint(bp_contacto)
 app.register_blueprint(bp_reserva)
 app.register_blueprint(bp_availability)
 app.register_blueprint(bp_context)
-app.registar_blueprint(bp_confirmacion_mail)
+app.register_blueprint(bp_confirmacion_mail)
 
 @app.errorhandler(404)
 def error_404(e):

@@ -1,10 +1,18 @@
-from flask import Blueprint, render_template
-from services.backend_api import api_get
+from flask import Blueprint, render_template, current_app
+import requests
 
-bp_actividades = Blueprint("actividades", __name__)
+actividades_bp = Blueprint("actividades", __name__)
 
 
-@bp_actividades.route("/actividades")
+@actividades_bp.route("/actividades")
 def actividades():
-    actividades = api_get("activity")
+    actividades = []
+    try:
+        backend_url = f"{current_app.config['INTERNAL_BACKEND_URL']}/activity"
+        response = requests.get(backend_url)
+        response.raise_for_status()
+        json_data = response.json()
+        actividades = json_data.get("data", [])
+    except Exception as e:
+        print("Error al obtener actividades desde el backend:", e)
     return render_template("actividades.html", actividades=actividades)

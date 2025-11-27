@@ -1,13 +1,20 @@
-from flask import Blueprint, render_template
-from services.backend_api import api_get
-from services.gallery import safe_parse_gallery
+from flask import Blueprint, render_template, current_app
+import requests
+from functions import parse_gallery
 
-bp_servicios = Blueprint("servicios", __name__)
+servicios_bp = Blueprint('servicios', __name__)
 
-
-@bp_servicios.route("/servicios")
+@servicios_bp.route("/servicios")
 def servicios():
-    servicios = api_get("services")
-    for servicio in servicios:
-        servicio["gallery"] = safe_parse_gallery(servicio.get("gallery"))
+    servicios = []
+    backend_url = current_app.config['INTERNAL_BACKEND_URL']
+    try:
+        response = requests.get(f"{backend_url}/services")
+        response.raise_for_status()
+        json_data = response.json()
+        servicios = json_data.get("data", [])
+        for service in servicios:
+            service["gallery"] = parse_gallery(service.get("gallery"))
+    except Exception as e:
+        print("Error al obtener servicios desde el backend:", e)
     return render_template("servicios.html", servicios=servicios)

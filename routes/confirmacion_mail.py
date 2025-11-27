@@ -1,11 +1,8 @@
-from flask import Blueprint, Flask, render_template, request, jsonify
-from config import init_config
+from flask import Blueprint, request, jsonify, current_app
 from extensions import mail
 from flask_mail import Message
 import requests
 import json
-
-from services.backend_api import api_get
 
 bp_confirmacion_mail = Blueprint("confirmacion_mail", __name__)
 
@@ -16,7 +13,13 @@ def mail_reserva_paquete(datos_reserva):
     checkout_date = datos_reserva["checkout_date"]
     adults = datos_reserva["adults"]
     children = datos_reserva["children"]
-    paquetes = api_get("package")
+
+    backend_url = f"{current_app.config['INTERNAL_BACKEND_URL']}/package"
+    response = requests.get(backend_url)
+    response.raise_for_status()
+    json_data = response.json()
+    paquetes = json_data.get("data", [])
+
     for paquete in paquetes:
         if (datos_reserva["package_id"] == int(paquete.get("id"))):
             paquete_name = paquete.get("name")
@@ -47,7 +50,12 @@ def mail_reserva_personalizada(datos_reserva):
     adults = datos_reserva["adults"]
     children = datos_reserva["children"]
 
-    room_types = api_get("room_types")
+
+    backend_url = f"{current_app.config['INTERNAL_BACKEND_URL']}/room_types"
+    response = requests.get(backend_url)
+    response.raise_for_status()
+    json_data = response.json()
+    room_types = json_data.get("data", [])
     
     for room in room_types:
         if (datos_reserva["roomTypeId"] == int(room.get("id"))):

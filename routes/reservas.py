@@ -35,7 +35,7 @@ def reserva():
             print(f"Error procesando paquete {paquete_id}: {e}")
             return redirect(url_for("paquetes.paquetes", status="package_error"))
 
-        return render_template("reserva.html", paquete=paquete_data, data=None)
+        return render_template("reserva.html", paquete=paquete_data, data=None, public_backend_url=current_app.config.get("PUBLIC_BACKEND_URL"))
     else:
         data = {"rooms": [], "services": [], "activities": []}
         try:
@@ -62,7 +62,7 @@ def reserva():
         except Exception as e:
             print("Error fetching data for reservation form:", e)
 
-        return render_template("reserva.html", paquete=None, data=data)
+        return render_template("reserva.html", paquete=None, data=data, public_backend_url=current_app.config.get("PUBLIC_BACKEND_URL"))
 
 
 @reservas_bp.route("/check-availability")

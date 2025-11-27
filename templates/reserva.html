@@ -44,7 +44,8 @@
         <form class="reserva-paquete__form" id="form-reserva-paquete" action="{{ url_for('reserva.reserva') }}" method="POST"
               data-paquete-id="{{ paquete.id }}"
               data-room-type-id="{{ paquete.room_type.id if paquete.room_type else '' }}"
-              data-nights="{{ paquete.nights }}">
+              data-nights="{{ paquete.nights }}"
+              data-backend-url="{{ public_backend_url }}">
             <div class="form-personalizada__group">
                 <div class="form-personalizada__group-item">
                     <label for="checkin-paquete">Check-in</label>

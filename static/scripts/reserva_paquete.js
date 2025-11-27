@@ -118,8 +118,11 @@ document.addEventListener('DOMContentLoaded', function () {
             children: children
         };
 
+        // Obtener la URL base del backend desde el atributo data del formulario
+        const backendUrl = formReservaPaquete.dataset.backendUrl;
+
         try {
-            const response = await fetch('http://localhost:5001/reservations', {
+            const response = await fetch(`${backendUrl}/reservations`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

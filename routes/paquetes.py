@@ -14,8 +14,9 @@ def paquetes():
         json_data = response.json()
         paquetes = json_data.get("data", [])
         for paquete in paquetes:
-            paquete["gallery"] = parse_gallery(paquete.get("gallery"))
-            paquete["galeria"] = paquete.get("gallery")
+            parsed_gallery = parse_gallery(paquete.get("gallery"))
+            paquete["gallery"] = parsed_gallery
+            paquete["galeria"] = parsed_gallery
             paquete["nombre"] = paquete.get("name")
             paquete["descripcion"] = paquete.get("description")
     except Exception as e:

@@ -1,5 +1,5 @@
 from flask_mail import Message
-from typing import Dict, List, Any
+from typing import List, Any
 import ast
 
 
@@ -41,18 +41,28 @@ def enviar_email_contacto(mail, datos_formulario, archivo_adjunto):
         return False
 
 
-def parse_gallery(dicts_list: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    proc_list: List[Dict[str, Any]] = []
-    for item in dicts_list:
-        copied_item = item.copy()
-        if "galeria" in copied_item and isinstance(copied_item["galeria"], str):
-            try:
-                copied_item["galeria"] = ast.literal_eval(copied_item["galeria"])
-            except Exception as e:
-                print(
-                    f"Error parsing gallery for item {item.get('id', 'unknown')}: {e}"
-                )
-                copied_item["galeria"] = []
+def parse_gallery(gallery_value: Any) -> List[Any]:
+    """
+    Normaliza el campo `gallery` que viene del backend usando `isinstance`
 
-        proc_list.append(copied_item)
-    return proc_list
+    - Si ya viene como lista → se devuelve tal cual.
+    - Si viene como string que representa una lista → se intenta parsear.
+    - En cualquier otro caso → [].
+    """
+    # Caso 1: ya es una lista (lo que más nos conviene en los templates)
+    if isinstance(gallery_value, list):
+        return gallery_value
+
+    # Caso 2: viene como string (por ejemplo '["img1.jpg", "img2.jpg"]')
+    if isinstance(gallery_value, str):
+        try:
+            parsed = ast.literal_eval(gallery_value)
+            if isinstance(parsed, list):
+                return parsed
+        except Exception:
+            # Si falla el parseo, devolvemos lista vacía y seguimos
+            pass
+        return []
+
+    # Caso 3: cualquier otro tipo lo normalizamos a lista vacía
+    return []

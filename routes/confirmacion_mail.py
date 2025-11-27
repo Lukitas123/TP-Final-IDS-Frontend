@@ -24,11 +24,11 @@ def calcular_precio_final(room_price,activities_chosen, services_chosen):
         for activity_chosen in activities_chosen:
             for activity in activities:
                 if ( int(activity_chosen) == int(activity.get("id")) ):
-                    activities_price += int(activity.get("price"))
+                    activities_price += float(activity.get("price"))
         price_final += activities_price
 
     if (services_chosen):
-        backend_url = f"{current_app.config['INTERNAL_BACKEND_URL']}/service"
+        backend_url = f"{current_app.config['INTERNAL_BACKEND_URL']}/services"
         response = requests.get(backend_url)
         response.raise_for_status()
         json_data = response.json()
@@ -36,7 +36,7 @@ def calcular_precio_final(room_price,activities_chosen, services_chosen):
         for service_chosen in services_chosen:
             for service in services:
                 if (int(service_chosen) == int(service.get("id")) ):
-                    services_price += int(service.get("price"))
+                    services_price += float(service.get("price"))
         price_final += services_price
 
     return price_final
@@ -55,6 +55,9 @@ def mail_reserva_paquete(datos_reserva):
     response.raise_for_status()
     json_data = response.json()
     paquetes = json_data.get("data", [])
+
+    paquete_name = "Desconocido"
+    paquete_price = 0
 
     for paquete in paquetes:
         if (datos_reserva["package_id"] == int(paquete.get("id"))):
@@ -95,6 +98,9 @@ def mail_reserva_personalizada(datos_reserva):
     checkout_date_formatted = datetime.strptime(checkout_date, format_string)
     total_stay = checkout_date_formatted - checkin_date_formatted
 
+    room_name = "Desconocida"
+    room_price = 0
+
     backend_url = f"{current_app.config['INTERNAL_BACKEND_URL']}/room_types"
     response = requests.get(backend_url)
     response.raise_for_status()
@@ -103,7 +109,10 @@ def mail_reserva_personalizada(datos_reserva):
     for room in room_types:
         if (datos_reserva["roomTypeId"] == int(room.get("id"))):
             room_name = room.get("name")
-            room_price = (int(room.get("price")) * int(total_stay.days) )
+            price = room.get("price_per_night")
+            if price is None:
+                price = 0
+            room_price = (float(price) * int(total_stay.days) )
     
     price_final = calcular_precio_final(room_price,activities,services)
     body = f"""

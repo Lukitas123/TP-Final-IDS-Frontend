@@ -96,7 +96,7 @@ from routes.actividades import actividades_bp
 from routes.paquetes import paquetes_bp
 from routes.contacto import contacto_bp
 from routes.reservas import reservas_bp
-from routes.confirmacion_mail import confirmacion_mail_bp
+from routes.confirmacion_mail import bp_confirmacion_mail
 
 app.register_blueprint(home_bp)
 app.register_blueprint(habitaciones_bp)
@@ -105,7 +105,7 @@ app.register_blueprint(actividades_bp)
 app.register_blueprint(paquetes_bp)
 app.register_blueprint(contacto_bp)
 app.register_blueprint(reservas_bp)
-app.register_blueprint(confirmacion_mail_bp)
+app.register_blueprint(bp_confirmacion_mail)
 
 if __name__ == "__main__":
     app.run("localhost", 3000, debug=True)

@@ -99,7 +99,7 @@ def mail_reserva_personalizada(datos_reserva):
     for room in room_types:
         if (datos_reserva["roomTypeId"] == int(room.get("id"))):
             room_name = room.get("name")
-            room_price = (int(room.get("price")) * (date(checkout_date) - date(checkin_date) ))
+            room_price = (int(room.get("price")) * (date(checkout_date) - date(checkin_date)).days )
     
     price_final = calcular_precio_final(room_price,activities,services)
     body = f"""

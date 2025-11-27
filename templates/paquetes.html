@@ -22,17 +22,17 @@
       {% for paquete in paquetes %}
       <div class="card" id="{{ paquete.id }}">
         <h3 class="card__title" id="card-title-{{ paquete.id }}">
-          {{ paquete.name }}
+          {{ paquete.nombre }}
         </h3>
         <div class="card__body">
           <div class="card__main-content">
             <div class="card__carousel">
               <div class="carousel-container" id="carousel-{{ paquete.id }}">
-                {% for imagen in paquete.gallery %}
+                {% for imagen in paquete.galeria %}
                 <div class="carousel-slide">
                   <img
                     src="{{ url_for('static', filename=imagen) }}"
-                    alt="{{ paquete.name }}"
+                    alt="{{ paquete.nombre }}"
                   />
                 </div>
                 {% endfor %}
@@ -51,7 +51,7 @@
               </button>
             </div>
             <div class="card__description">
-              {{ paquete.description| replace('\n', '<br />') |safe }}
+              {{ paquete.descripcion| replace('\n', '<br />') |safe }}
             </div>
           </div>
           <a

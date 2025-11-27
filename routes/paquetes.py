@@ -15,7 +15,6 @@ def paquetes():
         paquetes = json_data.get("data", [])
         for paquete in paquetes:
             parsed_gallery = parse_gallery(paquete.get("gallery"))
-            paquete["gallery"] = parsed_gallery
             paquete["galeria"] = parsed_gallery
             paquete["nombre"] = paquete.get("name")
             paquete["descripcion"] = paquete.get("description")

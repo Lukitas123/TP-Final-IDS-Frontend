@@ -15,7 +15,6 @@ def servicios():
         servicios = json_data.get("data", [])
         for service in servicios:
             parsed_gallery = parse_gallery(service.get("gallery"))
-            service["gallery"] = parsed_gallery
             service["galeria"] = parsed_gallery
             service["nombre"] = service.get("name")
             service["descripcion"] = service.get("description")

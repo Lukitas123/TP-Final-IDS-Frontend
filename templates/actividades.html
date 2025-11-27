@@ -22,25 +22,25 @@
       {% for actividad in actividades %}
       <div class="card" id="{{ actividad.id }}">
         <h3 class="card__title" id="card-title-{{ actividad.id }}">
-          {{ actividad.name }}
+          {{ actividad.nombre }}
         </h3>
         <div class="card__body">
           <div class="card__main-content">
             <div class="card__side-info">
               <div class="card__description--activity">
-                {{ actividad.description }}
+                {{ actividad.descripcion }}
               </div>
               <div class="card__schedule">
-                <strong>Cronograma:</strong> {{ actividad.schedule }}
+                <strong>Cronograma:</strong> {{ actividad.cronograma }}
               </div>
               <div class="card__price">
-                <strong>Precio:</strong> {{ actividad.price }}
+                <strong>Precio:</strong> {{ actividad.precio }}
               </div>
             </div>
             <div class="card__carousel card__carousel--single">
               <img
-                src="{{ url_for('static', filename=actividad.gallery) }}"
-                alt="{{ actividad.name }}"
+                src="{{ url_for('static', filename=actividad.galeria[0] if actividad.galeria else '') }}"
+                alt="{{ actividad.nombre }}"
               />
             </div>
           </div>

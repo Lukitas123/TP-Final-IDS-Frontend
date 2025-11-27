@@ -15,7 +15,8 @@ def habitaciones():
         json_data = response.json()
         room_types = json_data.get("data", [])
         for room in room_types:
-            room["galeria"] = parse_gallery(room.get("gallery"))
+            room["gallery"] = parse_gallery(room.get("gallery"))
+            room["galeria"] = room.get("gallery")
             room["nombre"] = room.get("name")
             room["descripcion"] = room.get("description")
     except Exception as e:

@@ -13,6 +13,13 @@ def actividades():
         response.raise_for_status()
         json_data = response.json()
         actividades = json_data.get("data", [])
+
+        for actividad in actividades:
+            actividad["nombre"] = actividad.get("name")
+            actividad["descripcion"] = actividad.get("description")
+            actividad["cronograma"] = actividad.get("schedule")
+            actividad["precio"] = actividad.get("price")
+            actividad["galeria"] = actividad.get("gallery")
     except Exception as e:
         print("Error al obtener actividades desde el backend:", e)
     return render_template("actividades.html", actividades=actividades)

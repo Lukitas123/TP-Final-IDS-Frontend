@@ -15,6 +15,10 @@ def servicios():
         servicios = json_data.get("data", [])
         for service in servicios:
             service["gallery"] = parse_gallery(service.get("gallery"))
+            service["galeria"] = service.get("gallery")
+            service["nombre"] = service.get("name")
+            service["descripcion"] = service.get("description")
+            service["precio"] = service.get("price")
     except Exception as e:
         print("Error al obtener servicios desde el backend:", e)
     return render_template("servicios.html", servicios=servicios)

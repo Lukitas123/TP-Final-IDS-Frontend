@@ -140,8 +140,8 @@ document.querySelector('.reserva-personalizada__form').addEventListener('submit'
                 "customer_email": customerEmail,
                 "adults": adults,
                 "children": children,
-                "activity_ids": activityIds,
-                "service_ids": serviceIds
+                "activity": activityIds,
+                "service": serviceIds
             };
 
 

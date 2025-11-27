@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify, current_app
-from extensions import mail
+from app import mail
 from flask_mail import Message
 import requests
 import json

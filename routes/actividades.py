@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, current_app
 import requests
+from functions import parse_gallery
 
 actividades_bp = Blueprint("actividades", __name__)
 
@@ -19,6 +20,7 @@ def actividades():
             actividad["descripcion"] = actividad.get("description")
             actividad["cronograma"] = actividad.get("schedule")
             actividad["precio"] = actividad.get("price")
+            actividad["gallery"] = parse_gallery(actividad.get("gallery"))
             actividad["galeria"] = actividad.get("gallery")
     except Exception as e:
         print("Error al obtener actividades desde el backend:", e)

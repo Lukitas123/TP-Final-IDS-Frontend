@@ -16,7 +16,6 @@ def habitaciones():
         room_types = json_data.get("data", [])
         for room in room_types:
             parsed_gallery = parse_gallery(room.get("gallery"))
-            room["gallery"] = parsed_gallery
             room["galeria"] = parsed_gallery
             room["nombre"] = room.get("name")
             room["descripcion"] = room.get("description")

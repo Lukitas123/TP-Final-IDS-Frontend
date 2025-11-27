@@ -20,8 +20,8 @@ def actividades():
             actividad["descripcion"] = actividad.get("description")
             actividad["cronograma"] = actividad.get("schedule")
             actividad["precio"] = actividad.get("price")
-            actividad["gallery"] = parse_gallery(actividad.get("gallery"))
-            actividad["galeria"] = actividad.get("gallery")
+            parsed_gallery = parse_gallery(actividad.get("gallery"))
+            actividad["galeria"] = parsed_gallery
     except Exception as e:
         print("Error al obtener actividades desde el backend:", e)
     return render_template("actividades.html", actividades=actividades)

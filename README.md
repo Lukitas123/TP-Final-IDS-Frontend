@@ -1,8 +1,13 @@
 # Frontend – TP-Final-IDS-Frontend (Hotel Bugbusters)
 
 Este repositorio contiene el **frontend del proyecto Hotel Bugbusters**, desarrollado como parte del TP final de Introducción al Desarrollo de Software (FIUBA).  
-Es una aplicación web en **Flask** que funciona como sitio público del hotel y como capa de presentación que consume la API REST del backend.
-
+Es una aplicación web en **Flask** que funciona como sitio público del hotel y como capa de presentación que consume la API REST del backend.<br>
+**Integrantes:**
+- Florian Lucchini
+- Lukas Peneff
+- Harold Montaño
+- Lautaro Cosentino
+- Santino Salvatori
 ## Objetivo del Frontend
 
 - Mostrar el sitio web principal del proyecto.

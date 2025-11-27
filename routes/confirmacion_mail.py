@@ -4,7 +4,7 @@ from flask_mail import Message
 import requests
 import json
 
-from datetime import date
+from datetime import date, datetime, timedelta
 
 bp_confirmacion_mail = Blueprint("confirmacion_mail", __name__)
 
@@ -90,6 +90,10 @@ def mail_reserva_personalizada(datos_reserva):
     services = datos_reserva["service"]
     activities = datos_reserva["activity"]
 
+    format_string = "%Y-%m-%d"
+    checkin_date_formatted = datetime.strptime(checkin_date, format_string)
+    checkout_date_formatted = datetime.strptime(checkout_date, format_string)
+    total_stay = checkout_date_formatted - checkin_date_formatted
 
     backend_url = f"{current_app.config['INTERNAL_BACKEND_URL']}/room_types"
     response = requests.get(backend_url)
@@ -99,7 +103,7 @@ def mail_reserva_personalizada(datos_reserva):
     for room in room_types:
         if (datos_reserva["roomTypeId"] == int(room.get("id"))):
             room_name = room.get("name")
-            room_price = (int(room.get("price")) * (date(checkout_date) - date(checkin_date)).days )
+            room_price = (int(room.get("price")) * int(total_stay.days) )
     
     price_final = calcular_precio_final(room_price,activities,services)
     body = f"""

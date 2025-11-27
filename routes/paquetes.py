@@ -1,15 +1,20 @@
-from flask import Blueprint, render_template
-from services.backend_api import api_get
-from services.gallery import safe_parse_gallery
+from flask import Blueprint, render_template, current_app
+import requests
+from functions import parse_gallery
 
-bp_paquetes = Blueprint("paquetes", __name__)
+paquetes_bp = Blueprint('paquetes', __name__)
 
-
-@bp_paquetes.route("/paquetes")
+@paquetes_bp.route("/paquetes")
 def paquetes():
-    paquetes = api_get("package")
-
-    for paquete in paquetes:
-        paquete["gallery"] = safe_parse_gallery(paquete.get("gallery"))
-
+    paquetes = []
+    try:
+        backend_url = f"{current_app.config['INTERNAL_BACKEND_URL']}/package"
+        response = requests.get(backend_url)
+        response.raise_for_status()
+        json_data = response.json()
+        paquetes = json_data.get("data", [])
+        for paquete in paquetes:
+            paquete["gallery"] = parse_gallery(paquete.get("gallery"))
+    except Exception as e:
+        print("Error al obtener paquetes desde el backend:", e)
     return render_template("paquetes.html", paquetes=paquetes)

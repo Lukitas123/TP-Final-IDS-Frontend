@@ -1,17 +1,23 @@
-from flask import Blueprint, render_template
-from services.backend_api import api_get
-from services.gallery import safe_parse_gallery
+from flask import Blueprint, render_template, current_app
+import requests
+from functions import parse_gallery
 
-bp_habitaciones = Blueprint("habitaciones", __name__)
+habitaciones_bp = Blueprint('habitaciones', __name__)
 
 
-@bp_habitaciones.route("/habitaciones")
+@habitaciones_bp.route("/habitaciones")
 def habitaciones():
-    rooms = api_get("room_types")
-
-    for room in rooms:
-        room["galeria"] = safe_parse_gallery(room.get("gallery"))
-        room["nombre"] = room.get("name")
-        room["descripcion"] = room.get("description")
-
-    return render_template("habitaciones.html", habitaciones=rooms)
+    room_types = []
+    try:
+        backend_url = f"{current_app.config['INTERNAL_BACKEND_URL']}/room_types"
+        response = requests.get(backend_url)
+        response.raise_for_status()
+        json_data = response.json()
+        room_types = json_data.get("data", [])
+        for room in room_types:
+            room["galeria"] = parse_gallery(room.get("gallery"))
+            room["nombre"] = room.get("name")
+            room["descripcion"] = room.get("description")
+    except Exception as e:
+        print("Error al obtener tipos de habitación desde el backend:", e)
+    return render_template("habitaciones.html", habitaciones=room_types)

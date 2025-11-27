@@ -4,6 +4,8 @@ from flask_mail import Message
 import requests
 import json
 
+from datetime import date
+
 bp_confirmacion_mail = Blueprint("confirmacion_mail", __name__)
 
 #Se usa para las reservas personalizadas.
@@ -97,7 +99,7 @@ def mail_reserva_personalizada(datos_reserva):
     for room in room_types:
         if (datos_reserva["roomTypeId"] == int(room.get("id"))):
             room_name = room.get("name")
-            room_price = int(room.get("price"))
+            room_price = (int(room.get("price")) * (date(checkout_date) - date(checkin_date) ))
     
     price_final = calcular_precio_final(room_price,activities,services)
     body = f"""
